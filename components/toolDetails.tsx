@@ -7,6 +7,7 @@ import { IoLogoVercel } from'react-icons/io5'
 import { cn } from '@/lib/utils'
 import { IconProps, IconType } from './TechStack'
 import { GiArtificialIntelligence } from 'react-icons/gi'
+import { PiOpenAiLogoLight } from 'react-icons/pi'
 
 
 interface ToolsStackProps {
@@ -19,55 +20,55 @@ interface ToolsStackProps {
 const ToolDetails = () => {
 
     const toolsStacks: ToolsStackProps[] = [
-                {
-                    title: "GitHub",
-                    icon: FaGithub,
-                    percent: 95,
-                    color: "text-cyan-400"
-                },
-                {
-                    title: "Vercel",
-                    icon: IoLogoVercel,
-                    percent: 95,
-                    color: "text-emerald-400"
-                },
-                {
-                    title: "Postman",
-                    icon: SiPostman,
-                    percent: 90,
-                    color: "text-orange-400"
-                },
-                {
-                    title: "Docker",
-                    icon: FaDocker,
-                    percent: 90,
-                    color: "text-sky-400"
-                },
-                {
-                    title: "Firebase",
-                    icon: SiFirebase,
-                    percent: 90,
-                    color: "text-red-400"
-                },
-                {
-                    title: "DBeaver",
-                    icon: SiDbeaver,
-                    percent: 90,
-                    color: "text-amber-700"
-                },
-                {
-                    title: "ChatGPT",
-                    icon: GiArtificialIntelligence,
-                    percent: 95,
-                    color: "text-indigo-400"
-                },
-                {
-                    title: "Visual Studio",
-                    icon: DiVisualstudio,
-                    percent: 95,
-                    color: "text-blue-500"
-                },
-            ]
+            {
+                title: "GitHub",
+                icon: FaGithub,
+                percent: 95,
+                color: "text-cyan-400"
+            },
+            {
+                title: "Vercel",
+                icon: IoLogoVercel,
+                percent: 95,
+                color: "text-emerald-400"
+            },
+            {
+                title: "Postman",
+                icon: SiPostman,
+                percent: 90,
+                color: "text-orange-400"
+            },
+            {
+                title: "Docker",
+                icon: FaDocker,
+                percent: 90,
+                color: "text-sky-400"
+            },
+            {
+                title: "Firebase",
+                icon: SiFirebase,
+                percent: 90,
+                color: "text-red-400"
+            },
+            {
+                title: "DBeaver",
+                icon: SiDbeaver,
+                percent: 90,
+                color: "text-amber-700"
+            },
+            {
+                title: "ChatGPT",
+                icon: PiOpenAiLogoLight,
+                percent: 95,
+                color: "text-indigo-400"
+            },
+            {
+                title: "Visual Studio",
+                icon: DiVisualstudio,
+                percent: 95,
+                color: "text-blue-500"
+            },
+        ]
 
   return (
 

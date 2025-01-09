@@ -13,31 +13,31 @@ import { cn } from '@/lib/utils'
 const TechnicalSkills = () => {
 
     const technologies = [
-            {
-                title: "Next Js",
-                icon: RiNextjsFill,
-                percent: 90,
-                color: "text-emerald-400"
-            },
-            {
-                title: "React Js",
-                icon: RiReactjsFill,
-                percent: 95,
-                color: "text-blue-400"
-            },
-            {
-                title: "TypeScript",
-                icon: SiTypescript,
-                percent: 95,
-                color: "text-gray-400"
-            },
-            {
-                title: "Tailwind CSS",
-                icon: RiTailwindCssFill,
-                percent: 95,
-                color: "text-sky-500"
-            },
-        ]
+        {
+            title: "Next Js",
+            icon: RiNextjsFill,
+            percent: 90,
+            color: "text-emerald-400"
+        },
+        {
+            title: "React Js",
+            icon: RiReactjsFill,
+            percent: 95,
+            color: "text-blue-400"
+        },
+        {
+            title: "TypeScript",
+            icon: SiTypescript,
+            percent: 95,
+            color: "text-gray-400"
+        },
+        {
+            title: "Tailwind CSS",
+            icon: RiTailwindCssFill,
+            percent: 95,
+            color: "text-sky-500"
+        },
+    ]
 
   return (
 
@@ -55,7 +55,7 @@ const TechnicalSkills = () => {
         <ul>React.js, Next.js: Crafting interactive SPAs and SSR solutions for optimized performance.</ul>
         <ul>TypeScript: Ensuring scalable and type-safe codebases.</ul>
         <ul>Tailwind CSS: Building clean and visually appealing designs efficiently.</ul>
-        <div className='grid grid-cols-2 py-8 gap-6'>
+        <div className='grid grid-cols-1 lg:grid-cols-2 py-8 gap-6'>
             {technologies.map((tech,i) => {
                 const Icon = tech.icon;
                 return (
