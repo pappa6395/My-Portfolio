@@ -6,7 +6,7 @@ import SectionSubHeading from './SectionSubHeading'
 import { FaBriefcase } from 'react-icons/fa'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, Captions } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 
@@ -24,7 +24,7 @@ type ProjectDetails = {
     previewLink: string;
 }
 
-const Projects = () => {
+const Blogs = () => {
 
     const projectCategories: ProjectProps[] = [
         {
@@ -116,8 +116,8 @@ const Projects = () => {
     <div className='ralative bg-slate-50 dark:bg-slate-900
     rounded-tr-2xl px-8 py-16'>
         <div className='space-y-2'>
-            <SectionSubHeading title={"Projects"} icon={FaBriefcase}/>
-            <SectionHeading title={"Explore Portfolio By Technology"}/> 
+            <SectionSubHeading title={"My Blog"} icon={Captions}/>
+            <SectionHeading title={"Exploring Our Blog"}/> 
         </div>
         <div className='py-5'>
             <div className='flex flex-wrap gap-4'>
@@ -134,45 +134,36 @@ const Projects = () => {
                     )
                 })}
             </div>
-            <div className='py-4'>
+            <div className='py-4 flex flex-col items-center justify-center'>
                 <div className="py-8 grid grid-cols-1 lg:grid-cols-2 gap-4">
-                {activeCategory.projects?.map((project,i) => {
-                    return (
-                        <div key={i} className='border rounded-xl shadow-md dark:border-gray-800'>
-                            <div>
-                                <Link href={project.previewLink}>
-                                    <img 
-                                        src={project.image}
-                                        alt={"image"}
-                                        className='rounded-2xl'
-                                    />
-                                </Link>
-                                <Link href={"#"} className='block py-2 p-3 hover:text-lime-400 duration-300'>
-                                    <h2 className='font-bold text-2xl'>{project.title}</h2>
-                                </Link>
-                                <div className='flex items-center justify-between'>
-                                    <div className='flex p-3 flex-wrap space-x-1'>
-                                        {project.tech.map((item,i) => {
-                                            return (
-                                                <button key={i} className='dark:bg-slate-600 bg-slate-200 hover:bg-lime-500
-                                                rounded-full py-1 px-3 text-xs uppercase'>
-                                                    {item}
-                                                </button>
-
-                                            )
-                                        })}
-                                    </div>
-                                    <div>
-                                        <Link href={project.previewLink} className='p-3 mr-2 dark:bg-slate-500 bg-slate-200 rounded-full block'>
-                                            <ArrowUpRight className='size-4' />
-                                        </Link>
-                                    </div>
-                                </div>
-                            </div>  
-                        </div>
-                    )
-                })}
+                    {activeCategory.projects?.map((project,i) => {
+                        return (
+                            <div key={i} className='border rounded-xl shadow-md dark:border-gray-800'>
+                                <div>
+                                    <Link href={project.previewLink}>
+                                        <img 
+                                            src={project.image}
+                                            alt={"image"}
+                                            className='rounded-2xl'
+                                        />
+                                    </Link>
+                                    <Link href={"#"} className='block w-fit ml-3 px-2 py-2 mt-2 dark:hover:bg-lime-600 hover:bg-lime-400 duration-300 border rounded-full'>
+                                        <span className='font-medium text-neutral-500 hover:text-slate-800'>April 28, 2020</span>
+                                    </Link>
+                                    <Link href={"#"} className='block px-2 py-2 ml-3 hover:text-lime-400 duration-300'>
+                                        <h2 className='font-bold text-2xl'>{project.title}</h2>
+                                    </Link>
+                                </div>  
+                            </div>
+                        )
+                    })}
                 </div>
+                <button 
+                    type="button" 
+                    className='border w-fit rounded-full shadow-md font-semibold
+                    px-2 py-2 uppercase tracking-wide hover:text-lime-500'>
+                    Load More
+                </button>
             </div>
         </div>
     </div>
@@ -180,4 +171,4 @@ const Projects = () => {
   )
 }
 
-export default Projects
+export default Blogs

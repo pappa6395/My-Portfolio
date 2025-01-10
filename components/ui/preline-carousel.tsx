@@ -1,3 +1,5 @@
+import { ChevronRight } from 'lucide-react'
+import Link from 'next/link'
 import React from 'react'
 
 const PrelineCarousel = () => {
@@ -7,119 +9,49 @@ const PrelineCarousel = () => {
 
     <div>
         <div>
-            <div className="ps-2 my-2 first:mt-0">
-                <h3 className="text-xs font-medium uppercase text-gray-500 dark:text-neutral-400">
-                1 Aug, 2023
-                </h3>
+            <div className="flex gap-x-3 py-2">
+                <div className="relative last:after:hidden after:absolute after:top-7 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-gray-300 dark:after:bg-neutral-700">
+                    <div className="relative z-10 size-7 flex justify-center items-center">
+                        <div className="size-2 rounded-full bg-gray-400 dark:bg-neutral-600"></div>
+                    </div>
+                </div>
+                <div className="grow border dark:bg-slate-900/80  bg-slate-100/80
+                shadow-md p-4 rounded-md pt-4 pb-4 space-y-2">
+                    <h3 className="w-fit text-xs font-medium uppercase text-gray-500 
+                    dark:text-neutral-400 border border-gray-400 rounded-full 
+                    py-1.5 px-4 mb-2">
+                        2000 - 2015
+                    </h3>
+                    <h3 className="flex gap-x-1.5 font-semibold text-gray-800 dark:text-white">
+                        Michigan Technology
+                    </h3>
+                    <p className="mt-1 text-base text-gray-600 dark:text-neutral-400">
+                        Houghton
+                    </p>
+                    <h2 className="flex gap-x-1.5 font-medium text-gray-800 dark:text-slate-100">
+                        Michigan Technological University offers a B.S. Computer Network.
+                    </h2>
+                    <button 
+                        type="button" 
+                        className="mt-1 -ms-1 p-1 gap-x-2 rounded-lg 
+                        border border-transparent focus:outline-none 
+                        focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none 
+                        dark:focus:bg-neutral-700">
+                        <Link 
+                            href={"#"} 
+                            className='flex items-center dark:hover:text-lime-500 
+                            hover:text-lime-600'
+                        >
+                            <span className='text-base dark:text-slate-50 
+                            text-slate-700 font-semibold uppercase 
+                            dark:hover:text-lime-500 hover:text-lime-600'
+                            >Certificate
+                            </span>
+                            <ChevronRight className='size-6' />
+                        </Link>
+                    </button>
+                </div>
             </div>
-
-
-        <div className="flex gap-x-3">
-    
-            <div className="relative last:after:hidden after:absolute after:top-7 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-gray-200 dark:after:bg-neutral-700">
-            <div className="relative z-10 size-7 flex justify-center items-center">
-                <div className="size-2 rounded-full bg-gray-400 dark:bg-neutral-600"></div>
-            </div>
-            </div>
-    
-
-    
-            <div className="grow pt-0.5 pb-8">
-            <h3 className="flex gap-x-1.5 font-semibold text-gray-800 dark:text-white">
-                <svg className="shrink-0 size-4 mt-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
-                <polyline points="14 2 14 8 20 8"></polyline>
-                <line x1="16" x2="8" y1="13" y2="13"></line>
-                <line x1="16" x2="8" y1="17" y2="17"></line>
-                <line x1="10" x2="8" y1="9" y2="9"></line>
-                </svg>
-                Created "Preline in React" task
-            </h3>
-            <p className="mt-1 text-sm text-gray-600 dark:text-neutral-400">
-                Find more detailed insctructions here.
-            </p>
-            <button type="button" className="mt-1 -ms-1 p-1 inline-flex items-center gap-x-2 text-xs rounded-lg border border-transparent text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-neutral-400 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700">
-                <img className="shrink-0 size-4 rounded-full" src="https://images.unsplash.com/photo-1659482633369-9fe69af50bfb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8auto=format&fit=facearea&facepad=3&w=320&h=320&q=80" alt="Avatar"/>
-                James Collins
-            </button>
-            </div>
-    
-        </div>
-
-
-
-        <div className="flex gap-x-3">
-    
-            <div className="relative last:after:hidden after:absolute after:top-7 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-gray-200 dark:after:bg-neutral-700">
-            <div className="relative z-10 size-7 flex justify-center items-center">
-                <div className="size-2 rounded-full bg-gray-400 dark:bg-neutral-600"></div>
-            </div>
-            </div>
-    
-
-    
-            <div className="grow pt-0.5 pb-8">
-            <h3 className="flex gap-x-1.5 font-semibold text-gray-800 dark:text-white">
-                Release v5.2.0 quick bug fix 🐞
-            </h3>
-            <button type="button" className="mt-1 -ms-1 p-1 inline-flex items-center gap-x-2 text-xs rounded-lg border border-transparent text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-neutral-400 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700">
-                <span className="flex shrink-0 justify-center items-center size-4 bg-white border border-gray-200 text-[10px] font-semibold uppercase text-gray-600 rounded-full dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400">
-                A
-                </span>
-                Alex Gregarov
-            </button>
-            </div>
-            
-        </div>
-        
-        <div className="flex gap-x-3">
-        
-            <div className="relative last:after:hidden after:absolute after:top-7 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-gray-200 dark:after:bg-neutral-700">
-            <div className="relative z-10 size-7 flex justify-center items-center">
-                <div className="size-2 rounded-full bg-gray-400 dark:bg-neutral-600"></div>
-            </div>
-            </div>
-        
-            <div className="grow pt-0.5 pb-8">
-            <h3 className="flex gap-x-1.5 font-semibold text-gray-800 dark:text-white">
-                Marked "Install Charts" completed
-            </h3>
-            <p className="mt-1 text-sm text-gray-600 dark:text-neutral-400">
-                Finally! You can check it out here.
-            </p>
-            <button type="button" className="mt-1 -ms-1 p-1 inline-flex items-center gap-x-2 text-xs rounded-lg border border-transparent text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-neutral-400 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700">
-                <img className="shrink-0 size-4 rounded-full" src="https://images.unsplash.com/photo-1659482633369-9fe69af50bfb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=3&w=320&h=320&q=80" alt="Avatar"/>
-                James Collins
-            </button>
-            </div>
-    
-        </div>
-
-        <div className="ps-2 my-2 first:mt-0">
-            <h3 className="text-xs font-medium uppercase text-gray-500 dark:text-neutral-400">
-            31 Jul, 2023
-            </h3>
-        </div>
-
-        <div className="flex gap-x-3">
-    
-            <div className="relative last:after:hidden after:absolute after:top-7 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-gray-200 dark:after:bg-neutral-700">
-            <div className="relative z-10 size-7 flex justify-center items-center">
-                <div className="size-2 rounded-full bg-gray-400 dark:bg-neutral-600"></div>
-            </div>
-            </div>
-            
-            <div className="grow pt-0.5 pb-8">
-            <h3 className="flex gap-x-1.5 font-semibold text-gray-800 dark:text-white">
-                Take a break ⛳️
-            </h3>
-            <p className="mt-1 text-sm text-gray-600 dark:text-neutral-400">
-                Just chill for now... 😉
-            </p>
-            </div>
-            
-        </div>
-        
         </div>
     </div>
 

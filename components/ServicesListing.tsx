@@ -58,7 +58,7 @@ const ServicesListing = () => {
                     {services.map((service,i) => {
                         const Icon = service.icon;
                         return (
-                            <div key={i} className='border rounded-xl shadow-2xl p-3 dark:border-gray-800 '>
+                            <div key={i} className='border rounded-xl shadow-md p-3 dark:border-gray-800 '>
                                 <div className='flex justify-start items-center w-fit p-3'>
                                     <Icon className={cn('size-12 flex-shrink-0', service.color)}/>
                                     <div className='rounded-full px-6 py-2 border inline-block'>

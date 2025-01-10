@@ -17,7 +17,7 @@ const TechnicalSkills = () => {
             title: "Next Js",
             icon: RiNextjsFill,
             percent: 90,
-            color: "text-emerald-400"
+            color: "text-slate-600"
         },
         {
             title: "React Js",
@@ -85,16 +85,11 @@ const TechnicalSkills = () => {
                 )
             })}
         </div>
-        <div className='py-4 flex flex-col justify-center items-center border 
+        <div className='py-4 flex flex-col justify-center items-center border-none 
         space-x-6 rounded-full'>
             <h2 className='font-bold text-xl pt-4'>My Tech Stack</h2>
             <TechStack />
-        </div>
-        <div className='ml-6 px-5 items-center justify-center'>
             <IconCloudGlobe />
-            {/* <div>
-                <TechnologyCards />
-            </div> */}
         </div>
     </div>
 

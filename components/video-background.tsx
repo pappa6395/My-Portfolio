@@ -20,7 +20,7 @@ const VideoBackground = () => {
 
   return (
 
-    <div className="fixed w-full h-full max-w-full rounded-lg -z-50
+    <div className="fixed w-[430px] sm:w-[760px] md:w-[1030px] lg:w-full h-full max-w-full rounded-lg -z-50
           dark:border-gray-700 top-0 left-0 overflow-hidden">
         {isHydrated ? (
             <>

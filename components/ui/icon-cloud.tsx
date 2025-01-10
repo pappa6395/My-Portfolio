@@ -51,8 +51,8 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 
     const newIconCanvases = items.map((item, index) => {
       const offscreen = document.createElement("canvas");
-      offscreen.width = 40;
-      offscreen.height = 40;
+      offscreen.width = 50;
+      offscreen.height = 50;
       const offCtx = offscreen.getContext("2d");
 
       if (offCtx) {
@@ -71,7 +71,7 @@ export function IconCloud({ icons, images }: IconCloudProps) {
             offCtx.clip();
 
             // Draw the image
-            offCtx.drawImage(img, 0, 0, 40, 40);
+            offCtx.drawImage(img, 0, 0, 50, 50);
 
             imagesLoadedRef.current[index] = true;
           };
@@ -278,7 +278,7 @@ export function IconCloud({ icons, images }: IconCloudProps) {
             iconCanvasesRef.current[index] &&
             imagesLoadedRef.current[index]
           ) {
-            ctx.drawImage(iconCanvasesRef.current[index], -20, -20, 40, 40);
+            ctx.drawImage(iconCanvasesRef.current[index], -20, -20, 50, 50);
           }
         } else {
           // Show numbered circles if no icons/images are provided
@@ -310,13 +310,13 @@ export function IconCloud({ icons, images }: IconCloudProps) {
   return (
     <canvas
       ref={canvasRef}
-      width={400}
-      height={400}
+      width={390}
+      height={390}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
-      className="rounded-lg size-[680px] pb-16"
+      className="rounded-lg size-[380px] lg:size-[680px]"
       aria-label="Interactive 3D Icon Cloud"
       role="img"
     />

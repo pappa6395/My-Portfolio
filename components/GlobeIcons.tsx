@@ -39,7 +39,7 @@ export function IconCloudGlobe() {
   );
 
   return (
-    <div className="w-full items-center 
+    <div className="items-center 
     justify-center overflow-hidden">
       <IconCloud images={images} />
     </div>

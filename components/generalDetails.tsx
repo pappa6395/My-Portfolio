@@ -11,22 +11,22 @@ const GeneralDetails = () => {
 
     const generalsSkills: GeneralsSkillProps[] = [
                     {
-                        title: "GitHub",
+                        title: "MongoDB",
                         percent: 95,
                         color: "text-cyan-400"
                     },
                     {
-                        title: "Vercel",
+                        title: "Express.Js",
                         percent: 95,
                         color: "text-emerald-400"
                     },
                     {
-                        title: "Postman",
+                        title: "React.js",
                         percent: 90,
                         color: "text-orange-400"
                     },
                     {
-                        title: "Docker",
+                        title: "Node.js",
                         percent: 90,
                         color: "text-sky-400"
                     },

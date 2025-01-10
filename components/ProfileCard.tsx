@@ -13,51 +13,14 @@ import ShinyButton from './ui/shiny-button'
 
 const FixedSidebar = () => {
 
-    const navItems = [
-        {
-            href: "#",
-            icon: UserRoundPen,
-            title: "About"
-        },
-        {
-            href: "#",
-            icon: Dumbbell,
-            title: "Skills"
-        },
-        {
-            href: "#",
-            icon: VscTools,
-            title: "Services"
-        },
-        {
-            href: "#",
-            icon: BriefcaseBusiness,
-            title: "Projects"
-        },
-        {
-            href: "#",
-            icon: Landmark,
-            title: "Resume"
-        },
-        {
-            href: "#",
-            icon: FaRegNewspaper,
-            title: "Articles"
-        },
-        {
-            href: "#",
-            icon: LiaTelegramPlane,
-            title: "Contact"
-        },
-    ];
     const socialLinks = [
         {
-            href: "https://www.linkedin.com/in/nontachai-pahsukkul-b987082a7/",
+            href: "#",
             icon: FaLinkedin,
             title: "LinkedIn"
         },
         {
-            href: "https://www.facebook.com/pipe.nontachai.pahsukkul",
+            href: "#",
             icon: FaFacebook,
             title: "Facebook"
         },
@@ -67,7 +30,7 @@ const FixedSidebar = () => {
             title: "Line"
         },
         {
-            href: "https://github.com/pappa6395",
+            href: "#",
             icon: FaGithub,
             title: "GitHub"
         },
@@ -75,46 +38,8 @@ const FixedSidebar = () => {
 
   return (
 
-    <div className='md:fixed flex mx-2 gap-0 md:gap-4'>
-        <div className='space-y-3 hidden md:block'>
-            {/* Menu */}
-            <button className='flex flex-col gap-1.5 dark:bg-slate-900 p-3.5
-            group items-start justify-center bg-slate-50 rounded-[24px] w-14 h-14'>
-                <span className='flex-shrink-0 w-5 group-hover:w-6 h-[1.8px] 
-                dark:bg-slate-50 bg-slate-900 group-hover:bg-lime-500 transition-all duration-500'></span>
-                <span className='flex-shrink-0 w-6 h-[1.8px] 
-                dark:bg-slate-50 bg-slate-900 group-hover:bg-lime-500'></span>
-                <span className='flex-shrink-0 w-3 group-hover:w-6 h-[1.8px] 
-                dark:bg-slate-50 bg-slate-900 group-hover:bg-lime-500 transition-all duration-500'></span>
-            </button>
-            <ModeToggle />
-            {/* Navigation */}
-            <div className='flex flex-col gap-6 space-y-3 dark:bg-slate-900 
-            bg-slate-50 p-3.5 group items-start justify-center 
-            rounded-full'>
-                { navItems.map((Item, i) => {
-                    return (
-                        <div key={i} className='mt-2'>
-                                <TooltipProvider>
-                                    <Tooltip>
-                                        <TooltipTrigger>
-                                            <Link href={Item.href} className='hover:text-lime-500 duration-300'>
-                                                <Item.icon className='w-5 h-5 ml-0.5' />
-                                                <span className='sr-only'>{Item.title}</span>
-                                            </Link>
-                                        </TooltipTrigger>
-                                        <TooltipContent side='right' className='text-xs uppercase tracking-wider'>
-                                            <p>{Item.title}</p>
-                                        </TooltipContent>
-                                    </Tooltip>
-                                </TooltipProvider>
-                        </div>
-                    )
-                })}
-            </div>
-        </div>
-       
-        <div className='block md:hidden lg:block dark:bg-slate-900 bg-slate-50 gap-4 p-6 rounded-tl-xl
+    <div className='gap-0 md:gap-4'>
+        <div className='hidden md:block lg:hidden dark:bg-slate-900 bg-slate-50 gap-4 p-6 rounded-tl-xl
         rounded-b-xl w-full'>
                 <Image 
                     src={'/Pappo.JPG'} 
@@ -142,7 +67,7 @@ const FixedSidebar = () => {
                                 <TooltipProvider>
                                     <Tooltip>
                                         <TooltipTrigger>
-                                            <Link href={Item.href} target='_blank' className='dark:text-slate-50 text-slate-900
+                                            <Link href={Item.href} className='dark:text-slate-50 text-slate-900
                                             hover:text-lime-500 dark:bg-slate-900 bg-slate-50 duration-300'>
                                                 <Item.icon className='w-5 h-5' />
                                                 <span className='sr-only'>{Item.title}</span>
