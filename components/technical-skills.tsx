@@ -6,9 +6,12 @@ import { Dumbbell } from 'lucide-react'
 import { TechnologyCards } from './TechnologyCards'
 import { IconType, TechStack } from './TechStack'
 import { RiNextjsFill, RiReactjsFill, RiTailwindCssFill } from'react-icons/ri'
-import { SiTypescript } from 'react-icons/si'
+import { SiPrisma, SiTypescript } from 'react-icons/si'
 import { SVGProps } from "react";
 import { cn } from '@/lib/utils'
+import { GiGears } from 'react-icons/gi'
+import ToolDetails from './toolDetails'
+import GeneralSkills from './general-skills'
 
 const TechnicalSkills = () => {
 
@@ -26,8 +29,8 @@ const TechnicalSkills = () => {
             color: "text-blue-400"
         },
         {
-            title: "TypeScript",
-            icon: SiTypescript,
+            title: "Prisma ORM",
+            icon: SiPrisma,
             percent: 95,
             color: "text-gray-400"
         },
@@ -41,7 +44,7 @@ const TechnicalSkills = () => {
 
   return (
 
-    <div className='ralative bg-slate-50 dark:bg-slate-900
+    <div id="skills" className='ralative bg-slate-50 dark:bg-slate-900
     rounded-tr-2xl px-8 py-16'>
         <div className='space-y-2'>
             <SectionSubHeading title={"Technical skills"} icon={Dumbbell}/>
@@ -59,7 +62,7 @@ const TechnicalSkills = () => {
             {technologies.map((tech,i) => {
                 const Icon = tech.icon;
                 return (
-                    <div key={i} className='border rounded-xl shadow-2xl p-3 dark:border-gray-800 '>
+                    <div key={i} className='border rounded-xl shadow-lg p-3 dark:border-gray-800 '>
                         <div className='flex justify-end'>
                             <div className='rounded-full px-6 py-2 border inline-block'>
                                 {tech.percent} %    
@@ -76,7 +79,7 @@ const TechnicalSkills = () => {
                         >
                             <div 
                                 className="flex flex-col justify-center rounded-full 
-                                overflow-hidden bg-blue-50 text-xs text-white 
+                                overflow-hidden bg-lime-300 text-xs text-white 
                                 text-center whitespace-nowrap transition 
                                 duration-500 dark:bg-blue-50" 
                                 style={{width: `${tech.percent}%`}}></div>
@@ -85,12 +88,29 @@ const TechnicalSkills = () => {
                 )
             })}
         </div>
-        <div className='py-4 flex flex-col justify-center items-center border-none 
-        space-x-6 rounded-full'>
-            <h2 className='font-bold text-xl pt-4'>My Tech Stack</h2>
-            <TechStack />
-            <IconCloudGlobe />
+
+        <div className='space-y-2'>
+            <SectionSubHeading title={"Tool Skills"} icon={GiGears}/>
+            <SectionHeading title={"Tools Stack"}/>
         </div>
+        <div>
+          <h3>Back-End Proficiency</h3>
+          <p className='text-base py-3'>
+          With hands-on experience in server-side programming and database management,
+          I build secure, scalable systems using
+          </p>
+          <ul>Node.js and Express.js: Creating robust APIs and server-side logic.</ul>
+          <ul>SQL and NoSQL Databases: Designing efficient schemas and optimizing data flow (PostgreSQL, Firebase).</ul>
+          <ul>Authentication: Implementing secure login/signup flows using Firebase and third-party OAuth services.</ul>
+            <ToolDetails />
+        </div>
+         <GeneralSkills />
+         <div className='flex flex-col justify-center items-center border-none 
+        space-x-6 rounded-full'>
+            {/* <h2 className='font-bold text-xl pt-4'>My Tech Stack</h2> */}
+            {/* <TechStack /> */}
+            <IconCloudGlobe />
+        </div>   
     </div>
 
   )

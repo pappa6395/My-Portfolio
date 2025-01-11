@@ -27,7 +27,7 @@ const AboutSection = () => {
 
   return (
 
-    <div className='relative bg-slate-50 dark:bg-slate-900 -z-40
+    <div id="about" className='relative bg-slate-50 dark:bg-slate-900 -z-40
     rounded-tr-2xl px-8 py-8'>
         <Meteors number={55} />
         <div className='flex items-center gap-4 py-2'>

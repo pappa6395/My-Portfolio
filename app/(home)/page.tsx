@@ -37,12 +37,10 @@ export default function Home() {
           <div className="mx-2 space-y-4 -mt-4">
             <ProfileCard />
             <AboutSection />
-            <TechnicalSkills/>
-            <ToolsStack />
-            <GeneralSkills />
-            <ServicesListing />
-            <Pricing />
             <Projects />
+            <TechnicalSkills/>
+            <ServicesListing />
+            {/* <Pricing /> */}
             <WorkExperience />
             <Testimonial />
             <Blogs />

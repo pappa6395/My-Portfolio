@@ -1,17 +1,19 @@
-import React, { ReactNode } from 'react'
-
-const DashboardLayout = ({children}: {children: ReactNode}) => {
 
 
-    return (
+import DashboardNavbar from "@/components/dashboard/DashboardNavbar";
+import Sidebar from "@/components/dashboard/Sidebar";
+import React, { ReactNode } from "react";
 
-        <div>
-            <h1>Dashboard Layout</h1>
-            {children}
-        </div>
-        
-    )
+export default function DashboardLayout({ children }: { children: ReactNode }) {
 
+  return (
+    
+    <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
+      <Sidebar />
+      <div className="flex flex-col">
+        <DashboardNavbar />
+        <div className="p-6">{children}</div>
+      </div>
+    </div>
+  );
 }
-
-export default DashboardLayout

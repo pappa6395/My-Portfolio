@@ -3,9 +3,9 @@ import SectionSubHeading from './SectionSubHeading'
 import SectionHeading from './SectionHeading'
 import { LiaLaptopCodeSolid } from 'react-icons/lia'
 import GeneralDetails from './generalDetails'
-import { FaCode, FaLanguage, FaPhp, FaPython, FaReact } from 'react-icons/fa'
+import { FaCode, FaLanguage, FaNodeJs, FaPhp, FaPython, FaReact } from 'react-icons/fa'
 import { MdFormatListBulleted } from'react-icons/md'
-import { BiLogoJavascript, BiLogoTypescript } from'react-icons/bi'
+import { BiData, BiLogoJavascript, BiLogoTypescript } from'react-icons/bi'
 import { Check } from 'lucide-react'
 
 const GeneralSkills = () => {
@@ -24,15 +24,15 @@ const GeneralSkills = () => {
             color: "text-lime-500"
         },
         {
-            title: "Python",
-            icon: FaPython,
-            percent: 50,
+            title: "Node.Js",
+            icon: FaNodeJs,
+            percent: 90,
             color: "text-lime-500"
         },
         {
-            title: "Php",
-            icon: FaPhp,
-            percent: 30,
+            title: "Python",
+            icon: FaPython,
+            percent: 50,
             color: "text-lime-500"
         },
     ];
@@ -57,10 +57,10 @@ const GeneralSkills = () => {
   return (
 
     <div className='ralative bg-slate-50 dark:bg-slate-900
-    rounded-tr-2xl px-8 py-16'>
+    rounded-tr-2xl px-8'>
         <div className='space-y-2'>
             <SectionHeading title={"Fullstack"}/>
-            <SectionSubHeading title={"General Skills"} icon={LiaLaptopCodeSolid}/>
+            <SectionSubHeading title={"Database"} icon={BiData}/>
         </div>
         <div>
             <GeneralDetails />

@@ -21,12 +21,12 @@ const GeneralDetails = () => {
                         color: "text-emerald-400"
                     },
                     {
-                        title: "React.js",
+                        title: "PostgreSQL",
                         percent: 90,
                         color: "text-orange-400"
                     },
                     {
-                        title: "Node.js",
+                        title: "MySQL",
                         percent: 90,
                         color: "text-sky-400"
                     },
@@ -38,7 +38,7 @@ const GeneralDetails = () => {
     <div className="grid grid-cols-2 lg:grid-cols-4 py-6 gap-6">
         {generalsSkills?.map((skill,i) => {
             return (
-                <div key={i} className="w-fit border rounded-xl shadow-2xl p-3 dark:border-gray-800">
+                <div key={i} className="w-fit border rounded-xl shadow-lg p-3 dark:border-gray-800">
                     <div className="relative size-32 px-2">
                         <svg 
                             className="size-full -rotate-90" 

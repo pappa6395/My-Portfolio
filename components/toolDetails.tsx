@@ -76,7 +76,7 @@ const ToolDetails = () => {
         {toolsStacks?.map((tool,i) => {
             const Icon = tool.icon;
             return (
-                <div key={i} className="w-fit border rounded-xl shadow-2xl p-3 dark:border-gray-800">
+                <div key={i} className="w-fit border rounded-xl shadow-lg p-3 dark:border-gray-800">
                     <div className="relative size-32 px-2">
                         <svg 
                             className="size-full -rotate-90" 

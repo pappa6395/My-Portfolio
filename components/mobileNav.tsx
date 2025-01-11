@@ -13,42 +13,42 @@ import Link from 'next/link'
 const MobileNav = () => {
 
     const navItems = [
-        {
-            href: "#",
-            icon: UserRoundPen,
-            title: "About"
-        },
-        {
-            href: "#",
-            icon: Dumbbell,
-            title: "Skills"
-        },
-        {
-            href: "#",
-            icon: VscTools,
-            title: "Services"
-        },
-        {
-            href: "#",
-            icon: BriefcaseBusiness,
-            title: "Projects"
-        },
-        {
-            href: "#",
-            icon: Landmark,
-            title: "Resume"
-        },
-        {
-            href: "#",
-            icon: FaRegNewspaper,
-            title: "Articles"
-        },
-        {
-            href: "#",
-            icon: LiaTelegramPlane,
-            title: "Contact"
-        },
-    ];
+            {
+                href: "/#about",
+                icon: UserRoundPen,
+                title: "About"
+            },
+            {
+                href: "/#projects",
+                icon: BriefcaseBusiness,
+                title: "Projects"
+            },
+            {
+                href: "/#skills",
+                icon: Dumbbell,
+                title: "Skills"
+            },
+            {
+                href: "/#services",
+                icon: VscTools,
+                title: "Services"
+            },
+            {
+                href: "/#resume",
+                icon: Landmark,
+                title: "Resume"
+            },
+            {
+                href: "/#blogs",
+                icon: FaRegNewspaper,
+                title: "Blogs"
+            },
+            {
+                href: "/#contact",
+                icon: LiaTelegramPlane,
+                title: "Contact"
+            },
+        ];
 
     const [isDropdownOpen, setIsDropdownOpen] = React.useState(false)
 

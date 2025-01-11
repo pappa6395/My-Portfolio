@@ -48,7 +48,7 @@ const ServicesListing = () => {
 
   return (
 
-    <div className='ralative bg-slate-50 dark:bg-slate-900
+    <div id="services" className='ralative bg-slate-50 dark:bg-slate-900
     rounded-tr-2xl px-8 py-16'>
         <div className='space-y-2'>
             <SectionSubHeading title={"Services"} icon={GrServices}/>

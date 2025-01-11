@@ -15,37 +15,37 @@ const FixedSidebar = () => {
 
     const navItems = [
         {
-            href: "#",
+            href: "/#about",
             icon: UserRoundPen,
             title: "About"
         },
         {
-            href: "#",
-            icon: Dumbbell,
-            title: "Skills"
-        },
-        {
-            href: "#",
-            icon: VscTools,
-            title: "Services"
-        },
-        {
-            href: "#",
+            href: "/#projects",
             icon: BriefcaseBusiness,
             title: "Projects"
         },
         {
-            href: "#",
+            href: "/#skills",
+            icon: Dumbbell,
+            title: "Skills"
+        },
+        {
+            href: "/#services",
+            icon: VscTools,
+            title: "Services"
+        },
+        {
+            href: "/#resume",
             icon: Landmark,
             title: "Resume"
         },
         {
-            href: "#",
+            href: "/#blogs",
             icon: FaRegNewspaper,
-            title: "Articles"
+            title: "Blogs"
         },
         {
-            href: "#",
+            href: "/#contact",
             icon: LiaTelegramPlane,
             title: "Contact"
         },
