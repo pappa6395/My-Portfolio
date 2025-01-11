@@ -19,20 +19,18 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { RiFileExcel2Line } from "react-icons/ri";
 import { PiMicrosoftExcelLogo } from "react-icons/pi";
-import Select from "react-tailwindcss-select";
 import {
   Options,
   SelectValue,
 } from "react-tailwindcss-select/dist/components/type";
 
 import { formatBytes } from "@/lib/formatBytes";
-import generateSlug from "@/utils/generateSlug";
 
 import toast from "react-hot-toast";
 import exportDataToExcel from "@/lib/exportDataToExcel";
 
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog";
-import { createBulkCategories } from "@/actions/messages";
+
 type TableHeaderProps = {
   title: string;
   href: string;
