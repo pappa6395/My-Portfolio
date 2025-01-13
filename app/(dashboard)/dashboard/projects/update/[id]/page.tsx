@@ -3,6 +3,11 @@ import { getProjectById, getProjectCategories } from '@/actions/projects';
 import ProjectForm from '@/components/dashboard/Forms/ProjectForm'
 import React from 'react'
 
+type PageProps = {
+  params: {
+    id: string;
+  };
+};
 
 
 const page = async ({params: paramsPromise}: PageProps) => {
