@@ -5,6 +5,18 @@ const nextConfig: NextConfig = {
   experimental: {
     scrollRestoration: true,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: '**.ufs.sh',
+      },
+      {
+        protocol: "https",
+        hostname: '**',
+      },
+    ]
+  }
 };
 
 export default nextConfig;

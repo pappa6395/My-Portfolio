@@ -4,7 +4,9 @@ import SectionHeading from './SectionHeading'
 import { IoBriefcaseOutline } from 'react-icons/io5'
 import EmblaCarousel from './ui/embla-carousel'
 import { EmblaOptionsType } from 'embla-carousel'
-import PrelineCarousel from './ui/preline-carousel'
+import CoursesCarousel from './carousel/courses-carousel'
+import EducationCarousel from './carousel/education-carousel'
+
 
 
 const WorkExperience = () => {
@@ -27,11 +29,11 @@ const WorkExperience = () => {
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-6 mt-4'>
             <div>
                 <SectionSubHeading title={"Courses"} icon={IoBriefcaseOutline}/>
-                <PrelineCarousel />
+                <CoursesCarousel />
             </div>
             <div className=''>
                 <SectionSubHeading title={"Education"} icon={IoBriefcaseOutline}/>
-                <PrelineCarousel />
+                <EducationCarousel />
             </div>
         </div>
     </div>

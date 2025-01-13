@@ -1,27 +1,27 @@
 
+import { getProjectsByCategories } from "@/actions/projects";
+import { getSettings } from "@/actions/settings";
 import AboutSection from "@/components/about-section";
 import Blogs from "@/components/blogs";
 import Contact from "@/components/contact";
 import FixedSidebar from "@/components/fixed-sidebar";
 import Footer from "@/components/footer";
-import GeneralSkills from "@/components/general-skills";
 import MobileNav from "@/components/mobileNav";
-import Pricing from "@/components/pricing";
 import ProfileCard from "@/components/ProfileCard";
-import Projects from "@/components/projects";
+import Projectz from "@/components/projectz";
 import ServicesListing from "@/components/ServicesListing";
 import TechnicalSkills from "@/components/technical-skills";
 import { Testimonial } from "@/components/testimonial";
-import ToolsStack from "@/components/tool-stack";
-
 import VideoBackground from "@/components/video-background";
 import WorkExperience from "@/components/WorkExperience";
 
 
 
 
-export default function Home() {
+export default async function Home() {
 
+  const siteSettings = await getSettings() || null;
+  const projectCategories = await getProjectsByCategories() || [];
 
   return (
     <div>
@@ -32,12 +32,12 @@ export default function Home() {
       <div className="py-4">
         <div className="flex flex-col md:flex-row gap-4 lg:gap-0 py-20 md:py-8">
           <div className="w-full">
-            <FixedSidebar />
+            <FixedSidebar siteSettings={siteSettings} />
           </div>
           <div className="mx-2 space-y-4 -mt-4">
             <ProfileCard />
-            <AboutSection />
-            <Projects />
+            <AboutSection siteSettings={siteSettings} />
+            <Projectz projectCategories={projectCategories} />
             <TechnicalSkills/>
             <ServicesListing />
             {/* <Pricing /> */}

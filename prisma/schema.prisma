@@ -1,8 +1,8 @@
 // This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+// learn more about it in the doc http//pris.ly/d/prisma-schema
 
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+// Try Prisma Accelerat http//pris.ly/cli/accelerate-init
 
 generator client {
   provider = "prisma-client-js"
@@ -19,6 +19,58 @@ model Message {
   lastName    String
   email       String
   message     String
+ 
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+}
+
+model Settings {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  phone       String    @default("+66 093 935 5695")
+  email       String    @default("devpapfullstack@gmail.com")
+  location    String    @default("Bangna, Bangkok Thailand")
+  cvUrl       String    @default("")
+  imageUrl    String    @default("https://8qh4ji8z4v.ufs.sh/f/kMIXYjz59pCodLQpa1VPcS4B6nF9wivxf3WyEGh7Mb0OLqoU")
+  linkedIn    String    @default("https://www.linkedin.com/in/nontachai-pahsukkul-b987082a7")
+  instagram   String    @default("https://www.instagram.com/nontachai_wn553/")
+  facebook    String    @default("https://www.facebook.com/pipe.nontachai.pahsukkul")
+  line        String    @default("https://line.me/ti/p/83NvVFsADO")
+  github      String    @default("https://github.com/pappa6395")
+  profileName String    @default("Nontachai Pahsukkul")
+  animatedText  String  @default("Fullstack, Web Developer, Engineer")
+  googleMap     String  @default("https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62029.8196342074!2d100.57532040242542!3d13.666049099359526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e2a00bb218f43d%3A0x30100b25de25070!2sBang%20Na%2C%20Bangkok!5e0!3m2!1sen!2sth!4v1736649964708!5m2!1sen!2sth")
+  profileDescription  String @default("have been a passionate and detail-oriented full-stack web developer with a proven track record of designing and implementing dynamic, user-centric web applications. My expertise spans both front-end and back-end development, enabling me to create seamless, end-to-end solutions that align with business objectives.")
+  profileLineOne      String @default("Junior Web Developer and")
+  profileLineTwo      String @default("Fullstack Developer")
+  profileLineThree    String @default("Based in Bangkok, Thailand.")
+  monthOfExperience    Int @default(6)
+  weekOfPractice       Int @default(24)
+ 
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+}
+
+model ProjectCategory {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  slug        String    @unique
+  projects    Projects[]
+ 
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+}
+ 
+model Projects {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  title         String
+  slug          String   @unique
+  imageUrl      String?
+  tags          String?
+  description   String?
+  categoryId    String   @db.ObjectId
+  github        String?
+  hostedLink    String?
+  category      ProjectCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade, onUpdate: Cascade)
  
   createdAt DateTime  @default(now())
   updatedAt DateTime? @updatedAt

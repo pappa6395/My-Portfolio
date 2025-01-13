@@ -1,26 +1,33 @@
 import React from 'react'
 import { WordRotateUp } from './ui/word-rotate'
 import Meteors from './ui/meteors'
+import { Settings } from '@prisma/client'
 
-const AboutSection = () => {
+const AboutSection = ({siteSettings}: {siteSettings: Settings | null}) => {
+
+    const aboutText = siteSettings?.animatedText.split(",") || [
+        "Nontachai P.",
+        "Fullstack", 
+        "Web Developer"
+    ]
 
     const stats = [
         {
             title1: 'Completed',
             title2: 'Projects',
-            count: 2,
+            count: 3,
             plus: false,
         },
         {
             title1: 'Months',
             title2: 'of Experience',
-            count: 6,
+            count: siteSettings?.monthOfExperience ?? 0,
             plus: false,
         },
         {
             title1: 'Weeks',
             title2: 'of Practices',
-            count: 24,
+            count: siteSettings?.weekOfPractice ?? 0,
             plus: true,
         },
     ]
@@ -34,39 +41,35 @@ const AboutSection = () => {
             <p className='text-xl md:text-2xl inline-block'>Hello,&nbsp; I &apos; m &nbsp;</p>
             <WordRotateUp
                 className='text-lime-400 text-xl md:text-2xl font-semibold tracking-wider'
-                words={[ "Nontachai P.", "Fullstack", "Web Developer"]}
+                words={aboutText}
             />
         </div>
         <div className='space-y-2'>
         <h2 className='scroll-m-20 text-4xl py-2 lg:text-5xl leading-[4.5rem]'>
-            Junior Web Developer and 
+            {siteSettings?.profileLineOne || ""}
         </h2>
         <p className='bg-lime-400 w-fit px-4 py-2 rounded-full 
             -rotate-2 text-3xl lg:text-4xl inline-block'>
-        Fullstack Developer
+        {siteSettings?.profileLineTwo || ""}
         </p> 
         <span className='inline-block  pt-2 text-3xl md:text-4xl lg:text-5xl'>&nbsp;Based in</span>  
-        <p className='text-5xl pt-2'>Bangkok, Thailand.</p>
+        <p className='text-5xl pt-2'>{siteSettings?.profileLineThree || ""}</p>
         </div>
         
         <div className='mt-5 pt-5'>
             <p className='highlight highlight-amber-300 dark:highlight-lime-800 
             highlight-variant-7 highlight-spread-md text-xl'>
-                have been a passionate and detail-oriented full-stack web developer with
-                a proven track record of designing and implementing dynamic, 
-                user-centric web applications. My expertise spans both front-end 
-                and back-end development, enabling me to create seamless, end-to-end solutions 
-                that align with business objectives.
+                {siteSettings?.profileDescription || ""}
             </p>
         </div>
         <div className='grid grid-cols-2 lg:flex justify-between mt-8 gap-4'>
-        {stats.map((stat, i) => {
+        {stats?.map((stat, i) => {
             return (
                 <div key={i} className='grid col-span-1 lg:flex gap-4 lg:gap-6 px-2 items-center'>
-                    <p className='text-6xl'>{stat.count} {stat.plus && "+"}</p>
+                    <p className='text-6xl'>{stat.count || 0} {stat.plus && "+"}</p>
                     <div className='text-sm'>
-                        <p>{stat.title1}</p>
-                        <p>{stat.title2}</p>
+                        <p>{stat.title1 || ""}</p>
+                        <p>{stat.title2 || ""}</p>
                     </div> 
                 </div>
             )

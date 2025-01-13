@@ -1,7 +1,7 @@
 "use client";
  
 import { ColumnDef } from "@tanstack/react-table";
-import { Message } from "@prisma/client";
+import { Message, Projects } from "@prisma/client";
 import ActionColumn from "@/components/DataTableColumns/Actions";
 import DateColumn from "@/components/DataTableColumns/DateColumn";
 import SortableColumn from "@/components/DataTableColumns/SortableColumn";
@@ -16,11 +16,12 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import Link from "next/link";
-import { Mail } from "lucide-react";
+import { ExternalLink, Mail } from "lucide-react";
+import ImageColumn from "@/components/DataTableColumns/ImageColumn";
 
 
 
-export const columns: ColumnDef<Message>[] = [
+export const columns: ColumnDef<Projects>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -44,42 +45,39 @@ export const columns: ColumnDef<Message>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: "firstName",
-    header: ({ column }) => <SortableColumn column={column} title="First Name" />,
+    accessorKey: "imageUrl",
+    header: "Project Image",
+    cell: ({ row }) => <ImageColumn row={row} accessorKey={"imageUrl"} />,
   },
   {
-    accessorKey: "lastName",
-    header: ({ column }) => <SortableColumn column={column} title="Last Name" />,
+    accessorKey: "title",
+    header: ({ column }) => <SortableColumn column={column} title="Title" />,
   },
   {
-    accessorKey: "email",
-    header: ({ column }) => <SortableColumn column={column} title="Email" />,
-  },
-  {
-    accessorKey: "message",
-    header: "View Message",
+    accessorKey: "description",
+    header: "View Project",
     cell: ({ row }) => {
-      const message = row.original;
+      const project = row.original;
       return (
         <div className="">
           <Dialog>
             <DialogTrigger asChild>
               <Button className="text-xs" variant="outline">
-                View Message
+                View Project
               </Button>
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>
-                <DialogTitle>Message from {message.firstName}</DialogTitle>
+                <DialogTitle>Project: {project.title}</DialogTitle>
                 <DialogDescription className="py-4">
-                  {message.message}
+                  {project.description}
                   <Link
                     target="_blank"
-                    href={`https://mail.google.com/mail/?view=cm&fs=1&to=${message.email}&su=Your+Subject+Here&body=Your+Body+here`}
+                    href={`${project.hostedLink}`}
                     className="flex items-center gap-2 "
                     >
-                    <Mail className="text-blue-500"/>
-                    <span className="font-semibold">Reply</span>to{" "} {message.email}
+                    <ExternalLink className="text-blue-500"/>
+                    <span className="font-semibold">Visit</span>to{" "} {project.hostedLink}
                   </Link>
                 </DialogDescription>
               </DialogHeader>
@@ -97,13 +95,13 @@ export const columns: ColumnDef<Message>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
-      const category = row.original;
+      const project = row.original;
       return (
         <ActionColumn
           row={row}
-          model="category"
-          editEndpoint={`categories/update/${category.id}`}
-          id={category.id}
+          model="project"
+          editEndpoint={`projects/update/${project.id}`}
+          id={project.id}
         />
       );
     },

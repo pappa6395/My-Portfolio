@@ -24,6 +24,7 @@ import { MoreHorizontal, Pencil, Trash } from "lucide-react";
 import toast from "react-hot-toast";
 import Link from "next/link";
 import { deleteMessage } from "@/actions/messages";
+import { deleteProjectById } from "@/actions/projects";
  
 type ActionColumnProps = {
   row: any;
@@ -44,6 +45,12 @@ export default function ActionColumn({
     try {
       if (model === "contact") {
         const res = await deleteMessage(id);
+        if (res?.ok) {
+          window.location.reload();
+        }
+        toast.success(`${model} Deleted Successfully`);
+      } else if (model === "project") {
+        const res = await deleteProjectById(id);
         if (res?.ok) {
           window.location.reload();
         }

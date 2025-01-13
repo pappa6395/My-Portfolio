@@ -3,16 +3,21 @@ import { ModeToggle } from './mode-toggle'
 import Link from 'next/link'
 import { BriefcaseBusiness, Dumbbell, Landmark, UserRoundPen } from 'lucide-react'
 import { VscTools } from 'react-icons/vsc'
-import { FaFacebook, FaGithub, FaLine, FaLinkedin, FaRegNewspaper } from 'react-icons/fa'
+import { FaFacebook, FaGithub, FaInstagram, FaLine, FaLinkedin, FaRegNewspaper } from 'react-icons/fa'
 import { LiaTelegramPlane } from 'react-icons/lia'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/tooltip'
 import Image from 'next/image'
 import { WordRotateDown } from './ui/word-rotate'
 import ShinyButton from './ui/shiny-button'
+import { Settings } from '@prisma/client'
 
 
-const FixedSidebar = () => {
+const FixedSidebar = ({siteSettings}: {siteSettings: Settings | null}) => {
 
+    const profileText = siteSettings?.animatedText.split(",") || [
+        "Fullstack", 
+        "Web Developer"
+    ]
     const navItems = [
         {
             href: "/#about",
@@ -52,22 +57,27 @@ const FixedSidebar = () => {
     ];
     const socialLinks = [
         {
-            href: "https://www.linkedin.com/in/nontachai-pahsukkul-b987082a7/",
+            href: `${siteSettings?.linkedIn}`,
             icon: FaLinkedin,
             title: "LinkedIn"
         },
         {
-            href: "https://www.facebook.com/pipe.nontachai.pahsukkul",
+            href: `${siteSettings?.instagram}`,
+            icon: FaInstagram,
+            title: "Instagram"
+        },
+        {
+            href: `${siteSettings?.facebook}`,
             icon: FaFacebook,
             title: "Facebook"
         },
         {
-            href: "#",
+            href: `${siteSettings?.line}`,
             icon: FaLine,
             title: "Line"
         },
         {
-            href: "https://github.com/pappa6395",
+            href: `${siteSettings?.github}`,
             icon: FaGithub,
             title: "GitHub"
         },
@@ -117,8 +127,8 @@ const FixedSidebar = () => {
         <div className='block md:hidden lg:block dark:bg-slate-900 bg-slate-50 gap-4 p-6 rounded-tl-xl
         rounded-b-xl w-full'>
                 <Image 
-                    src={'/Pappo.JPG'} 
-                    alt='devpap' 
+                    src={`${siteSettings?.imageUrl}`} 
+                    alt={`${siteSettings?.profileName}`} 
                     width={500} 
                     height={500}
                     className='object-cover rounded-b-xl
@@ -128,23 +138,23 @@ const FixedSidebar = () => {
             <div className='py-2 mt-2 gap-3 flex flex-col justify-center items-center'>
                 <WordRotateDown 
                     className='text-lime-500 text-xl font-bold uppercase tracking-wider'
-                    words={["Fullstack", "Web Developer"]}
+                    words={profileText}
                 />
                 <p className='dark:text-slate-50 text-slate-900 font-semibold
                 scroll-m-20 pb-2 text-2xl tracking-tight first:mt-0'>
-                    Nontachai Pahsukkul
+                    {siteSettings?.profileName}
                 </p>
-                <div className='flex justify-center items-center space-x-3 py-2'>
+                <div className='relative flex space-x-3 gap-2'>
                 { socialLinks.map((Item, i) => {
                         return (
-                            <div key={i} className='rounded-full p-3 border 
-                            border-slate-500/50 w-12 h-12 text-center'>
+                            <div key={i} className='rounded-full border 
+                            border-slate-500/50 w-8 h-8 text-center pt-1'>
                                 <TooltipProvider>
                                     <Tooltip>
                                         <TooltipTrigger>
                                             <Link href={Item.href} target='_blank' className='dark:text-slate-50 text-slate-900
                                             hover:text-lime-500 dark:bg-slate-900 bg-slate-50 duration-300'>
-                                                <Item.icon className='w-5 h-5' />
+                                                <Item.icon className='w-4 h-4' />
                                                 <span className='sr-only'>{Item.title}</span>
                                             </Link>
                                         </TooltipTrigger>
@@ -159,17 +169,17 @@ const FixedSidebar = () => {
                 </div>
                 <div className='w-full border-t mt-2 pt-2 gap-6 flex justify-between items-center'>
                     <ShinyButton>
-                        <Link href="#" className='hover:text-lime-500
-                        font-semibold h-10 text-center py-2
+                        <Link href={`${siteSettings?.cvUrl}`} className='hover:text-lime-500
+                        font-semibold h-10 text-xs text-center py-2
                         duration-300'>
-                            Download
+                            Download CV
                         </Link>
                     </ShinyButton>
                     <ShinyButton>
                         <Link href="#" className='hover:text-lime-500
-                        font-semibold text-center py-2
+                        font-semibold text-xs text-center py-2
                         duration-300'>
-                            Hire me
+                            Appointment
                         </Link> 
                     </ShinyButton>
                 </div>

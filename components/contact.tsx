@@ -52,7 +52,7 @@ const Contact = () => {
                     )
                 })}
                 <div className="overflow-hidden rounded-lg lg:col-span-2 h-96 lg:h-auto">
-                    <iframe width="100%" height="100%" title="map" src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=%C4%B0zmir+(My%20Business%20Name)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed"></iframe>
+                    <iframe width="100%" height="100%" title="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62029.8196342074!2d100.57532040242542!3d13.666049099359526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e2a00bb218f43d%3A0x30100b25de25070!2sBang%20Na%2C%20Bangkok!5e0!3m2!1sen!2sth!4v1736649964708!5m2!1sen!2sth"  loading="lazy"></iframe>
                 </div>
             </div>
 
