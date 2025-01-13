@@ -16,8 +16,6 @@ import VideoBackground from "@/components/video-background";
 import WorkExperience from "@/components/WorkExperience";
 
 
-
-
 export default async function Home() {
 
   const siteSettings = await getSettings() || null;
