@@ -21,6 +21,27 @@ export const ourFileRouter = {
       // !!! Whatever is returned here is sent to the clientside `onClientUploadComplete` callback
       return { uploadedBy: "NP" };
     }),
+  skillIconUpdate: f({ image: { maxFileSize: "2MB"}})
+    .onUploadComplete(async ({ metadata, file }) => {
+      // This code RUNS ON YOUR SERVER after upload
+      console.log("file url", file.url);
+      // !!! Whatever is returned here is sent to the clientside `onClientUploadComplete` callback
+      return { uploadedBy: "NP" };
+    }),
+  serviceIconUpdate: f({ image: { maxFileSize: "2MB"}})
+    .onUploadComplete(async ({ metadata, file }) => {
+      // This code RUNS ON YOUR SERVER after upload
+      console.log("file url", file.url);
+      // !!! Whatever is returned here is sent to the clientside `onClientUploadComplete` callback
+      return { uploadedBy: "NP" };
+    }),
+  blogImageUpdate: f({ image: { maxFileSize: "2MB"}})
+    .onUploadComplete(async ({ metadata, file }) => {
+      // This code RUNS ON YOUR SERVER after upload
+      console.log("file url", file.url);
+      // !!! Whatever is returned here is sent to the clientside `onClientUploadComplete` callback
+      return { uploadedBy: "NP" };
+    }),
   cvUpload: f({ pdf: { maxFileSize: "2MB"}})
     .onUploadComplete(async ({ metadata, file }) => {
       // This code RUNS ON YOUR SERVER after upload

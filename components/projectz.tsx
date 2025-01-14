@@ -6,9 +6,21 @@ import SectionSubHeading from './SectionSubHeading'
 import { FaBriefcase } from 'react-icons/fa'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { ProjectCategory, Projects } from '@prisma/client'
+import {
+    Dialog,
+    DialogClose,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+  } from "@/components/ui/dialog"
+import { Button } from './ui/button'
+  
 
 
 interface ProjectProps {
@@ -145,14 +157,67 @@ const Projectz = ({projectCategories}: {projectCategories: ProjectCategoryProps[
                     return (
                         <div key={i} className='border rounded-xl shadow-md dark:border-gray-800'>
                             <div>
-                                <Link href={`${project?.hostedLink || "#"}`}>
-                                    <img 
-                                        src={`${project?.imageUrl || "/defaultImage.png"}`}
-                                        alt={"image"}
-                                        className='rounded-2xl'
-                                    />
-                                </Link>
-                                <Link href={"#"} className='block py-2 p-3 hover:text-lime-400 duration-300'>
+                                <Dialog>
+                                    <DialogTrigger>
+                                        <Image 
+                                            src={`${project?.imageUrl || "/defaultImage.png"}`}
+                                            alt={"image"}
+                                            className='rounded-2xl'
+                                            width={500}
+                                            height={500}
+                                        />
+                                    </DialogTrigger>
+                                    <DialogContent className="sm:max-w-[550px]">
+                                        <DialogHeader>
+                                            <DialogTitle className='text-3xl font-semibold'>{project.title}</DialogTitle>
+                                            <DialogDescription className='text-lg'>
+                                                {project.description}
+                                            </DialogDescription>
+                                        </DialogHeader>
+                                        <Link href={`${project?.hostedLink || "#"}`} target='_blank'>
+                                            <Image 
+                                                src={`${project?.imageUrl || "/defaultImage.png"}`}
+                                                alt={"image"}
+                                                className='rounded-2xl'
+                                                width={500}
+                                                height={500}
+                                            />
+                                        </Link>
+                                        <div className='flex items-center justify-between'>
+                                            <div className='flex p-3 flex-wrap space-x-1'>
+                                                {project.tags && project?.tags.split(",").map((item,i) => {
+                                                    return (
+                                                        <button key={i} className='dark:bg-slate-600 bg-slate-200 hover:bg-lime-500
+                                                        rounded-full py-1 px-3 text-xs uppercase'>
+                                                            {item}
+                                                        </button>
+                                                    )
+                                                })}
+                                            </div>
+                                            <div>
+                                                <Link 
+                                                    href={`${project.hostedLink || "#"}`}
+                                                    target='_blank' 
+                                                    className='p-3 mr-2 dark:bg-slate-500 
+                                                    bg-slate-200 rounded-full block'>
+                                                    <ArrowUpRight className='size-4' />
+                                                </Link>
+                                            </div>
+                                        </div>
+                                        <DialogFooter className='sm:justify-start'>
+                                            <DialogClose asChild>
+                                                <Button type="button" variant={"secondary"}>
+                                                    <X className='size-4'/>
+                                                    Close
+                                                </Button>
+                                            </DialogClose>
+                                        </DialogFooter>
+                                    </DialogContent>
+                                </Dialog>
+                                <Link 
+                                    href={`${project.hostedLink || "#"}`} 
+                                    className='block py-2 p-3 hover:text-lime-400 duration-300'
+                                    target='_blank'>
                                     <h2 className='font-bold text-2xl'>{project?.title || ""}</h2>
                                 </Link>
                                 <div className='flex items-center justify-between'>
@@ -180,6 +245,7 @@ const Projectz = ({projectCategories}: {projectCategories: ProjectCategoryProps[
                         </div>
                     )
                 })}
+                
                 </div>
             </div>
         </div>

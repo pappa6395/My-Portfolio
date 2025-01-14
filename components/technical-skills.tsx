@@ -12,35 +12,37 @@ import { cn } from '@/lib/utils'
 import { GiGears } from 'react-icons/gi'
 import ToolDetails from './toolDetails'
 import GeneralSkills from './general-skills'
+import { Skills } from '@prisma/client'
+import Image from 'next/image'
 
-const TechnicalSkills = () => {
+const TechnicalSkills = ({allSkills}: {allSkills: Skills[]}) => {
 
-    const technologies = [
-        {
-            title: "Next Js",
-            icon: RiNextjsFill,
-            percent: 90,
-            color: "text-slate-600"
-        },
-        {
-            title: "React Js",
-            icon: RiReactjsFill,
-            percent: 95,
-            color: "text-blue-400"
-        },
-        {
-            title: "Prisma ORM",
-            icon: SiPrisma,
-            percent: 95,
-            color: "text-gray-400"
-        },
-        {
-            title: "Tailwind CSS",
-            icon: RiTailwindCssFill,
-            percent: 95,
-            color: "text-sky-500"
-        },
-    ]
+    // const technologies = [
+    //     {
+    //         title: "Next Js",
+    //         icon: RiNextjsFill,
+    //         percent: 90,
+    //         color: "text-slate-600"
+    //     },
+    //     {
+    //         title: "React Js",
+    //         icon: RiReactjsFill,
+    //         percent: 95,
+    //         color: "text-blue-400"
+    //     },
+    //     {
+    //         title: "Prisma ORM",
+    //         icon: SiPrisma,
+    //         percent: 95,
+    //         color: "text-gray-400"
+    //     },
+    //     {
+    //         title: "Tailwind CSS",
+    //         icon: RiTailwindCssFill,
+    //         percent: 95,
+    //         color: "text-sky-500"
+    //     },
+    // ]
 
   return (
 
@@ -59,8 +61,7 @@ const TechnicalSkills = () => {
         <ul>TypeScript: Ensuring scalable and type-safe codebases.</ul>
         <ul>Tailwind CSS: Building clean and visually appealing designs efficiently.</ul>
         <div className='grid grid-cols-1 lg:grid-cols-2 py-8 gap-6'>
-            {technologies.map((tech,i) => {
-                const Icon = tech.icon;
+            {allSkills.map((tech,i) => {
                 return (
                     <div key={i} className='border rounded-xl shadow-lg p-3 dark:border-gray-800 '>
                         <div className='flex justify-end'>
@@ -69,7 +70,12 @@ const TechnicalSkills = () => {
                             </div>
                         </div>
                         <div className='flex items-center gap-6 py-3 pt-2 pb-5'>
-                            <Icon className={cn('size-12 flex-shrink-0', tech.color)}/>
+                            <Image
+                                src={`${tech.iconUrl}` || '/defaultImage.png'}
+                                alt="icon"
+                                width={200}
+                                height={200} 
+                                className={cn('size-12 flex-shrink-0')}/>
                             <p className='text-xl'>{tech.title}</p>
                         </div>
                         <div 

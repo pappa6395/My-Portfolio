@@ -6,14 +6,16 @@ import { EmblaOptionsType } from 'embla-carousel'
 import { DotButton, useDotButton } from './embla-carousel-dot-button'
 import { NextButton, PrevButton, usePrevNextButtons } from './embla-carousel-arrow-button'
 import { Calendar } from 'lucide-react'
+import { Experiences } from '@prisma/client'
 
 type PropType = {
-  slides: number[]
-  options?: EmblaOptionsType
+  slides: number[];
+  options?: EmblaOptionsType;
+  experiences: Experiences[];
 }
 
 const EmblaCarousel: React.FC<PropType> = (props) => {
-  const { slides, options } = props
+  const { slides, options, experiences } = props
   const [emblaRef, emblaApi] = useEmblaCarousel(options)
 
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
@@ -30,11 +32,11 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
     <section className="embla">
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
-          {slides.map((index) => (
+          {experiences.map((experience, index) => (
             <div className="embla__slide" key={index}>
               {/* <div className="embla__slide__number">{index + 1}</div> */}
               <div className="relative mb-6 sm:mb-0">
-                    <h2 className='mb-4 font-semibold text-center dark:text-lime-400 text-lime-600 '>1982 - present</h2>
+                    <h2 className='mb-4 font-semibold text-center dark:text-lime-400 text-lime-600 '>{experience.period}</h2>
                     <div className="flex items-center">
                     <div className="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
                         <div className="z-10 flex items-center justify-center w-8 h-8 bg-lime-100 rounded-full ring-0 ring-white dark:bg-lime-500 sm:ring-8 dark:ring-gray-900 shrink-0">
@@ -45,18 +47,18 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                     <div className="mt-3 sm:pe-8 space-y-3 text-center px-8">
                         <h3 className="text-lg font-semibold text-gray-900 
                         dark:text-white">
-                            Big Data Engineer
+                            {experience.title}
                         </h3>
                         <time className="block mb-2 text-sm font-semibold 
                         leading-none text-gray-400 dark:text-gray-500
                         uppercase tracking-widest"
                         >
-                            Los Angeles, Google
+                            {experience.company}
                         </time>
                         <p className="text-base font-normal text-gray-500 
                         dark:text-gray-200"
                         >
-                            Get started with dozens of web components and interactive elements.
+                            {experience.description}
                         </p>
                     </div>
                 </div>

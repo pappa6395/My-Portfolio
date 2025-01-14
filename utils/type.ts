@@ -50,6 +50,56 @@ export type ProjectProps = {
     hostedLink: string;
 }
 
+export type SkillProps = {
+    title: string;
+    slug: string;
+    iconUrl: string;
+    percent: number;
+}
+
+export type ServiceProps = {
+    title: string;
+    slug: string;
+    iconUrl: string;
+    description: string;
+    slogan: string;
+}
+
+export type ExperienceProps = {
+    period: string;
+    title: string;
+    company: string;
+    description: string;
+}
+
+export type ReviewCardProps = {
+    id: string;
+    comment: string;
+    rating: number;
+    reviewerName: string;
+    reviewerImage: string;
+    reviewerTitle: string;
+    videoLink: string;
+    approved: boolean;
+    projectId: string;
+    createdAt: Date;
+    updatedAt: Date;
+};
+
+export type BlogProps ={
+    title: string;
+    slug: string;
+    imageUrl: string;
+    tags: string;
+    summary: string;
+    content: string;
+    categoryId: string;
+}
+
+export type BlogCategoryProps = {
+    title: string;
+    slug: string;
+}
 
 export type SelectOptionProps = {
     label: string;

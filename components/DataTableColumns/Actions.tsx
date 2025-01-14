@@ -25,6 +25,10 @@ import toast from "react-hot-toast";
 import Link from "next/link";
 import { deleteMessage } from "@/actions/messages";
 import { deleteProjectById } from "@/actions/projects";
+import { deleteSkillById } from "@/actions/skills";
+import { deleteServiceById } from "@/actions/services";
+import { deleteExperienceById } from "@/actions/experiences";
+import { deleteBlogById } from "@/actions/blogs";
  
 type ActionColumnProps = {
   row: any;
@@ -51,6 +55,30 @@ export default function ActionColumn({
         toast.success(`${model} Deleted Successfully`);
       } else if (model === "project") {
         const res = await deleteProjectById(id);
+        if (res?.ok) {
+          window.location.reload();
+        }
+        toast.success(`${model} Deleted Successfully`);
+      } else if (model === "skill") {
+        const res = await deleteSkillById(id);
+        if (res?.ok) {
+          window.location.reload();
+        }
+        toast.success(`${model} Deleted Successfully`);
+      } else if (model === "service") {
+        const res = await deleteServiceById(id);
+        if (res?.ok) {
+          window.location.reload();
+        }
+        toast.success(`${model} Deleted Successfully`);
+      }  else if (model === "experience") {
+        const res = await deleteExperienceById(id);
+        if (res?.ok) {
+          window.location.reload();
+        }
+        toast.success(`${model} Deleted Successfully`);
+      }  else if (model === "blog") {
+        const res = await deleteBlogById(id);
         if (res?.ok) {
           window.location.reload();
         }

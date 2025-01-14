@@ -1,6 +1,10 @@
 
+import { getExperiences } from "@/actions/experiences";
 import { getProjectsByCategories } from "@/actions/projects";
+import { getReviews } from "@/actions/reviews";
+import { getServices } from "@/actions/services";
 import { getSettings } from "@/actions/settings";
+import { getSkills } from "@/actions/skills";
 import AboutSection from "@/components/about-section";
 import Blogs from "@/components/blogs";
 import Contact from "@/components/contact";
@@ -20,6 +24,10 @@ export default async function Home() {
 
   const siteSettings = await getSettings() || null;
   const projectCategories = await getProjectsByCategories() || [];
+  const allSkills = await getSkills() || [];
+  const allServices = await getServices() || [];
+  const allExperiences = await getExperiences() || [];
+  const reviews = (await getReviews())?.data || [];
 
   return (
     <div>
@@ -36,11 +44,11 @@ export default async function Home() {
             <ProfileCard />
             <AboutSection siteSettings={siteSettings} />
             <Projectz projectCategories={projectCategories} />
-            <TechnicalSkills/>
-            <ServicesListing />
+            <TechnicalSkills allSkills={allSkills}/>
+            <ServicesListing allServices={allServices}/>
             {/* <Pricing /> */}
-            <WorkExperience />
-            <Testimonial />
+            <WorkExperience allExperiences={allExperiences}/>
+            <Testimonial reviews={reviews}/>
             <Blogs />
             <Contact/>
           </div>

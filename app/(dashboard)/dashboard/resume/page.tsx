@@ -3,23 +3,23 @@ import { columns } from "./columns";
 
 import DataTable from "@/components/DataTableComponents/Datatable";
 import TableHeader from "@/components/DataTableComponents/TableHeader";
-import { getProjects } from "@/actions/projects";
+import { getExperiences } from "@/actions/experiences";
  
 export default async function page() {
 
-  const projects = (await getProjects()) || [];
+  const experiences = (await getExperiences()) || [];
 
   return (
     <div className="p-8">
       <TableHeader
-        title="Projects"
-        linkTitle="Add Project"
-        href="/dashboard/projects/new"
-        data={projects}
-        model="project"
+        title="Experience"
+        linkTitle="Add Experience"
+        href="/dashboard/resume/new"
+        data={experiences}
+        model="experience"
       />
       <div className="py-8">
-        <DataTable data={projects} columns={columns} />
+        <DataTable data={experiences} columns={columns} />
       </div>
     </div>
   );

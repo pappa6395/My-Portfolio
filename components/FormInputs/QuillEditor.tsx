@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
+import ReactQuill from "react-quill-new";
+import "react-quill-new/dist/quill.snow.css";
 export default function QuillEditor({
   label,
   className = "sm:col-span-2",
@@ -17,7 +17,7 @@ export default function QuillEditor({
     toolbar: [
       [{ header: [1, 2, false] }],
       ["bold", "italic", "underline", "strike", "blockquote"],
-      [{ list: "ordered" }, { list: "bullet" }],
+      [{ list: "ordered" },{ list: "bullet" }],
       ["link", "color", "image"],
       [{ "code-block": true }],
       ["clean"],
@@ -31,7 +31,6 @@ export default function QuillEditor({
     "strike",
     "blockquote",
     "list",
-    "bullet",
     "link",
     "indent",
     "image",

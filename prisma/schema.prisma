@@ -75,3 +75,62 @@ model Projects {
   createdAt DateTime  @default(now())
   updatedAt DateTime? @updatedAt
 }
+
+model Skills {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  title         String
+  slug          String   @unique
+  iconUrl       String?
+  percent       Int?
+ 
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+}
+
+model Services {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  title         String
+  slug          String   @unique
+  iconUrl       String?
+  description   String
+  slogan        String
+ 
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+}
+
+model Experiences {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  title         String
+  period        String
+  company       String
+  description   String
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+}
+
+model BlogCategory {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  slug        String    @unique
+  blogs       Blogs[]
+ 
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+}
+
+model Blogs {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  title         String
+  slug          String   @unique
+  imageUrl      String?
+  tags          String?
+  summary       String?
+  content       String?
+  categoryId    String   @db.ObjectId
+  category      BlogCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+ 
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+}

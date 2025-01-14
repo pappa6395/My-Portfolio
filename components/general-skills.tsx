@@ -57,7 +57,7 @@ const GeneralSkills = () => {
   return (
 
     <div className='ralative bg-slate-50 dark:bg-slate-900
-    rounded-tr-2xl px-8'>
+    rounded-tr-2xl px-2'>
         <div className='space-y-2'>
             <SectionHeading title={"Fullstack"}/>
             <SectionSubHeading title={"Database"} icon={BiData}/>

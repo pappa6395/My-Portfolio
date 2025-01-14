@@ -4,9 +4,9 @@ import { ContactProps, ProjectCategoryProps, ProjectProps, SettingProps } from "
 import { revalidatePath } from "next/cache";
 
 
-export async function updateProject(id: string, data: SettingProps) {
+export async function updateProject(id: string, data: ProjectProps) {
   try {
-    const updatedSettings = db.settings.update({
+    const updatedProjects = db.projects.update({
       where: {
         id,
       },
@@ -14,8 +14,8 @@ export async function updateProject(id: string, data: SettingProps) {
     });
     
     // console.log(newCategory);
-    revalidatePath("/dashboard/settings");
-    return updatedSettings;
+    revalidatePath("/dashboard/projects");
+    return updatedProjects;
   } catch (error) {
     console.log(error);
     return null;
