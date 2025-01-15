@@ -30,6 +30,8 @@ import { createBlog, updateBlogById } from "@/actions/blogs";
 import BlogCategoryForm from "./BlogCategoryForm";
 
 import dynamic from "next/dynamic";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 
 
@@ -74,6 +76,18 @@ const initialImage = initialData?.imageUrl || "/placeholder.svg";
 const [imageUrl, setImageUrl] = useState(initialImage);
 const initialContent = initialData?.content || "";
 const [content, setContent] = useState(initialContent);
+const [step, setStep] = useState(1)
+
+    const nextStep= () => {
+        if (step < 3) {
+            setStep((prev) => prev + 1)
+        }
+    }
+    const prevStep = () => {
+        if (step > 1) {
+            setStep((prev) => prev - 1)
+        }
+    }
 
     const options: Options = [
     { value: "true", label: "Active" },
@@ -135,87 +149,128 @@ try {
     return (
     
         <form className="" onSubmit={handleSubmit(saveCategory)}>
-            <FormHeader
+            {step === 2 ? (
+                <FormHeader
                 href="/blogs"
                 title="Blog"
                 editingId={editingId}
                 loading={isLoading}
             />
-            <div className="grid grid-cols-12 gap-6 py-8">
-                <div className="lg:col-span-8 col-span-full space-y-5">
-                <Card>
-                    <CardHeader>
-                    <CardTitle>New Blog</CardTitle>
-                    <CardDescription>
-                        Add your new Blog category and details here.
-                    </CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                        <div className="grid gap-6 space-y-3">
-                            <div className="grid gap-3">
-                                <TextInput
-                                    register={register}
-                                    errors={errors}
-                                    label="Blog Title"
-                                    name="title"
-                                />
-                            </div>
-                            <div className="grid gap-3">
-                                <TextInput
-                                    register={register}
-                                    errors={errors}
-                                    label="Blog Tags"
-                                    name="tags"
-                                />
-                            </div>
-                            <div className="grid gap-3">
-                                <TextArea
-                                    register={register}
-                                    errors={errors}
-                                    label="Blog Summary"
-                                    name="summary"
-                                />
-                            </div>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-6 px-3">
-                            <div className="flex space-x-2 items-end">
-                                <FormSelectInput
-                                label="Blog Categories"
-                                options={blogCategories}
-                                option={selectedMainCategory}
-                                setOption={setSelectedMainCategory}
-                                />
-                                <div>
-                                    <BlogCategoryForm />
+            ) : (
+                <div className="flex items-center justify-between">
+                    <h2>Create Blog</h2>
+                    <Button type="button" onClick={nextStep}>Next Step</Button>
+                </div>
+            )}
+
+            {step === 1 && (
+                <div className="grid grid-cols-12 gap-6 py-8">
+                    <div className="lg:col-span-8 col-span-full space-y-5">
+                    <Card>
+                        <CardHeader>
+                        <CardTitle>New Blog</CardTitle>
+                        <CardDescription>
+                            Add your new Blog category and details here.
+                        </CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            <div className="grid gap-6 space-y-3">
+                                <div className="grid gap-3">
+                                    <TextInput
+                                        register={register}
+                                        errors={errors}
+                                        label="Blog Title"
+                                        name="title"
+                                    />
+                                </div>
+                                <div className="grid gap-3">
+                                    <TextInput
+                                        register={register}
+                                        errors={errors}
+                                        label="Blog Tags"
+                                        name="tags"
+                                    />
+                                </div>
+                                <div className="grid gap-3">
+                                    <TextArea
+                                        register={register}
+                                        errors={errors}
+                                        label="Blog Summary"
+                                        name="summary"
+                                    />
                                 </div>
                             </div>
-                        </div>
-                    </CardContent>
-                </Card>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-6 px-3">
+                                <div className="flex space-x-2 items-end">
+                                    <FormSelectInput
+                                    label="Blog Categories"
+                                    options={blogCategories}
+                                    option={selectedMainCategory}
+                                    setOption={setSelectedMainCategory}
+                                    />
+                                    <div>
+                                        <BlogCategoryForm />
+                                    </div>
+                                </div>
+                            </div>
+                        </CardContent>
+                    </Card>
+                    </div>
+                    <div className="lg:col-span-4 col-span-full ">
+                    <div className="grid auto-rows-max items-start gap-4 ">
+                        <ImageInput
+                        title="Blog Banner Image"
+                        imageUrl={imageUrl}
+                        setImageUrl={setImageUrl}
+                        endpoint="blogImageUpdate"
+                        />
+                    </div>
+                    </div>
                 </div>
-                <div className="lg:col-span-4 col-span-full ">
-                <div className="grid auto-rows-max items-start gap-4 ">
-                    <ImageInput
-                    title="Blog Banner Image"
-                    imageUrl={imageUrl}
-                    setImageUrl={setImageUrl}
-                    endpoint="blogImageUpdate"
+            )}
+            
+            {step === 2 && (
+                <div className="space-y-3">
+                    <QuillEditor
+                    label="Write your content here..."
+                    className=""
+                    value={content}
+                    onChange={setContent}
                     />
+                    <Button 
+                        size={"sm"}
+                        type="button" 
+                        variant={"secondary"} 
+                        onClick={prevStep}
+                    >
+                        Prev Step
+                    </Button>
                 </div>
-                </div>
-            </div>
-            <QuillEditor
-                label="Write the Content of the Meeting"
-                className=""
-                value={content}
-                onChange={setContent}
-            />
-            <FormFooter
+                
+            )}
+            
+            {step === 2 ? (
+                <FormFooter
                 href="/blogs"
                 editingId={editingId}
                 loading={isLoading}
                 title="Blog"
-            />
+                />
+            ) : (
+                <div className="flex justify-between items-center">
+                    <div>
+                        <Button variant={"outline"} type="button">
+                            <Link href='/dashboard/blogs'>
+                                Close
+                            </Link>
+                        </Button>
+                    </div>
+                    <Button type="button" onClick={nextStep} >
+                        Next Step
+                    </Button>
+                </div>
+            )}
+            
         </form>
     
     );

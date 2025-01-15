@@ -122,6 +122,7 @@ export default withUt({
 	require('tailwindcss-highlights'),
 	require('preline/plugin'),
 	require('@tailwindcss/forms'),
+	require('@tailwindcss/typography'),
 ],
   
 }) satisfies Config;

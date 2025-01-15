@@ -58,6 +58,48 @@ export async function getBlogById(id: string) {
   
 }
 
+export async function getBlogBySlug(slug: string) {
+  if (slug) {
+    try {
+      const blog = await db.blogs.findUnique({
+        where: {
+          slug,
+        },
+        include: {
+          category: true,
+        },
+      });
+  
+      return blog;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  }
+  
+}
+
+export async function getBlogCategoryBySlug(slug: string) {
+  if (slug) {
+    try {
+      const category = await db.blogCategory.findUnique({
+        where: {
+          slug,
+        },
+        include: {
+          blogs: true,
+        },
+      });
+  
+      return category;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  }
+  
+}
+
 export async function createBlog(data: BlogProps) {
   const slug = data.slug
   try {
@@ -170,4 +212,49 @@ export async function deleteBlogById(id: string) {
       console.log(error);
     }
   }
+}
+
+export async function getRelatedBlogs(blogId: string) {
+  const currentBlog = await db.blogs.findUnique({
+    where: {
+      id: blogId,
+    },
+    select: {
+      categoryId: true
+    },
+  })
+  if (!currentBlog) {
+    throw new Error('Blog not found');
+  }
+  const relatedBlogs = await db.blogs.findMany({
+    where: {
+      categoryId: currentBlog.categoryId,
+      NOT: {
+        id: blogId,
+      }
+    },
+    take: 3,
+    orderBy: {
+      createdAt: 'desc',
+    },
+  })
+  return relatedBlogs;
+}
+
+export async function getOtherBlogCategories(categoryId: string) {
+
+  const otherCategories = await db.blogCategory.findMany({
+    where: {
+      NOT: {
+        id: categoryId,
+      }
+    },
+    orderBy: {
+      createdAt: 'desc',
+    },
+    include: {
+      blogs: true,
+    },
+  })
+  return otherCategories;
 }

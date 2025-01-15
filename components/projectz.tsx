@@ -143,7 +143,7 @@ const Projectz = ({projectCategories}: {projectCategories: ProjectCategoryProps[
                         <button  
                         key={i} 
                         className={cn('dark:bg-slate-600 bg-slate-200 py-2 px-6 text-sm rounded-full uppercase', 
-                        activeCategory.slug === category.slug && "bg-lime-500")}
+                        activeCategory.slug === category.slug && "bg-lime-500 dark:bg-lime-600")}
                         onClick={() => setActiveCategory(category)}
                         >
                             {category.title || ""}

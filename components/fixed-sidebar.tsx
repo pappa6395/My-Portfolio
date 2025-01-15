@@ -10,6 +10,7 @@ import Image from 'next/image'
 import { WordRotateDown } from './ui/word-rotate'
 import ShinyButton from './ui/shiny-button'
 import { Settings } from '@prisma/client'
+import { Button } from './ui/button'
 
 
 const FixedSidebar = ({siteSettings}: {siteSettings: Settings | null}) => {
@@ -168,20 +169,35 @@ const FixedSidebar = ({siteSettings}: {siteSettings: Settings | null}) => {
                     })}
                 </div>
                 <div className='w-full border-t mt-2 pt-2 gap-6 flex justify-between items-center'>
-                    <ShinyButton>
-                        <Link href={`${siteSettings?.cvUrl}`} className='hover:text-lime-500
-                        font-semibold h-10 text-xs text-center py-2
+                    <Button 
+                        asChild 
+                        type="button" 
+                        variant={"outline"}
+                        style={{ borderRadius: '100px'}}
+                    >
+                        <Link 
+                            href={`${siteSettings?.cvUrl}`}
+                            target='_blank' 
+                            className='hover:text-lime-500
+                        font-semibold h-10 text-sm text-center py-2
                         duration-300'>
                             Download CV
                         </Link>
-                    </ShinyButton>
-                    <ShinyButton>
-                        <Link href="#" className='hover:text-lime-500
-                        font-semibold text-xs text-center py-2
-                        duration-300'>
+                    </Button>
+                    <Button 
+                        asChild 
+                        type="button" 
+                        variant={"outline"}
+                        style={{ borderRadius: '100px' }}
+                    >
+                        <Link 
+                            href="https://calendar.app.google/6x8LJAxemjJSFfAbA"
+                            target="_blank" 
+                            className='hover:text-lime-500 font-semibold 
+                            text-sm text-center py-2 duration-300'>
                             Appointment
                         </Link> 
-                    </ShinyButton>
+                    </Button>
                 </div>
             </div>
         </div>

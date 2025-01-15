@@ -9,8 +9,7 @@ const Footer = () => {
 
   const handleLogin = () => {
     
-    router.push('/dashboard')
-    console.log("Hello Wolrd");
+    router.push('/login')
     
   }
 

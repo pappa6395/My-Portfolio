@@ -1,3 +1,17 @@
+import { UserRole } from "@prisma/client";
+
+export type RegisterInputProps = {
+    name: string;
+    email: string;
+    role: UserRole;
+    image: string;
+    password: string;
+}
+
+export type LoginProps = {
+    email: string;
+    password: string;
+}
 
 export type ContactProps = {
     firstName: string;

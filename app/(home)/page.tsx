@@ -1,4 +1,5 @@
 
+import { getBlogsByCategories } from "@/actions/blogs";
 import { getExperiences } from "@/actions/experiences";
 import { getProjectsByCategories } from "@/actions/projects";
 import { getReviews } from "@/actions/reviews";
@@ -6,7 +7,7 @@ import { getServices } from "@/actions/services";
 import { getSettings } from "@/actions/settings";
 import { getSkills } from "@/actions/skills";
 import AboutSection from "@/components/about-section";
-import Blogs from "@/components/blogs";
+import BlogSection from "@/components/blogSection";
 import Contact from "@/components/contact";
 import FixedSidebar from "@/components/fixed-sidebar";
 import Footer from "@/components/footer";
@@ -28,6 +29,7 @@ export default async function Home() {
   const allServices = await getServices() || [];
   const allExperiences = await getExperiences() || [];
   const reviews = (await getReviews())?.data || [];
+  const blogCategories = await getBlogsByCategories() || [];
 
   return (
     <div>
@@ -49,7 +51,7 @@ export default async function Home() {
             {/* <Pricing /> */}
             <WorkExperience allExperiences={allExperiences}/>
             <Testimonial reviews={reviews}/>
-            <Blogs />
+            <BlogSection blogCategories={blogCategories} />
             <Contact/>
           </div>
         </div>
