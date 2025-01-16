@@ -90,7 +90,7 @@ const ServicesListing = ({allServices}: {allServices: Services[]}) => {
                                                 View Details
                                             </Button>
                                         </DialogTrigger>
-                                        <DialogContent className="sm:max-w-[550px]">
+                                        <DialogContent className="max-w-[380px] max-h-[800px] sm:max-h-screen sm:max-w-[550px]">
                                             <DialogHeader>
                                                 <DialogTitle className='text-3xl font-semibold'>{service.title}</DialogTitle>
                                                 <DialogDescription className='text-lg'>
@@ -104,11 +104,11 @@ const ServicesListing = ({allServices}: {allServices: Services[]}) => {
                                                 height={500} 
                                                 className={cn('w-full object-cover rounded')}/>
                                             <div className='flex items-center justify-between'>
-                                                <div className='flex p-3 text-lg font-medium flex-wrap space-x-1'>
-                                                    {service.description}
+                                                <div className='p-3 text-lg font-medium flex-wrap space-x-1'>
+                                                    <p className='line-clamp-5 sm:line-clamp-none overflow-scroll'>{service.description}</p>
                                                 </div>
                                             </div>
-                                            <DialogFooter className='sm:justify-between items-center'>
+                                            <DialogFooter className='flex flex-row justify-end gap-2'>
                                                 <DialogClose asChild>
                                                     <Button type="button" variant={"secondary"}>
                                                         Close
@@ -116,8 +116,8 @@ const ServicesListing = ({allServices}: {allServices: Services[]}) => {
                                                 </DialogClose>
                                                 <DialogClose asChild>
                                                     <Button asChild type="button" variant={"default"}>
-                                                        <Link href={"/book"} className='px-5'>
-                                                            Book this Service
+                                                        <Link href={"/book"} className='px-3'>
+                                                            Book Service
                                                         </Link>
                                                     </Button>
                                                 </DialogClose>

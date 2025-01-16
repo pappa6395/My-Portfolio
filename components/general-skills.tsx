@@ -50,7 +50,7 @@ const GeneralSkills = () => {
 
     const Circle = ({filled}:{filled: boolean}) => {
         return (
-            <div className={`w-4 h-4 rounded-full ${filled ? 'bg-lime-500' : 'bg-gray-500'}`}/>
+            <div className={`w-3 h-3 rounded-full ${filled ? 'bg-lime-500' : 'bg-gray-500'}`}/>
         )
     }
 
@@ -59,7 +59,6 @@ const GeneralSkills = () => {
     <div className='ralative bg-slate-50 dark:bg-slate-900
     rounded-tr-2xl px-2'>
         <div className='space-y-2'>
-            <SectionHeading title={"Fullstack"}/>
             <SectionSubHeading title={"Database"} icon={BiData}/>
         </div>
         <div>
@@ -75,7 +74,7 @@ const GeneralSkills = () => {
                     return (
                         <div key={i} className='py-4'>
                             <div className='flex items-center gap-4'>
-                            <div className='w-12 h-12 rounded-2xl border flex items-center justify-center'>
+                            <div className='size-8 rounded-2xl border flex items-center justify-center'>
                                 <Icon className='size-6'/>
                             </div>
                             <div className=''>
@@ -84,7 +83,10 @@ const GeneralSkills = () => {
                                     <div>
                                         <div className=' flex space-x-2'>
                                             {progress.map((filled, i) => (
-                                                <Circle key={i} filled={filled}/>
+                                                <Circle 
+                                                    key={i} 
+                                                    filled={filled} 
+                                                />
                                             ))}
                                         </div>
                                     </div>

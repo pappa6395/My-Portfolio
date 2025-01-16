@@ -10,8 +10,10 @@ import {
   Boxes,
   Computer,
   ExternalLink,
+  Home,
   Laptop,
   LayoutGrid,
+  MonitorCog,
   Package2,
   Pencil,
   Send,
@@ -22,13 +24,15 @@ import {
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
+import LogoutButton from "../logoutButton";
 
 export default function Sidebar() {
+
   const navLinks = [
     {
-        title: "Hero",
-        icon: Airplay,
-        href: "/dashboard/hero",
+        title: "Dashboard",
+        icon: Home,
+        href: "/dashboard",
       },
     {
       title: "Projects",
@@ -39,6 +43,11 @@ export default function Sidebar() {
       title: "Skills",
       icon: Boxes,
       href: "/dashboard/skills",
+    },
+    {
+      title: "Tools",
+      icon: MonitorCog,
+      href: "/dashboard/tools",
     },
     {
       title: "Services",
@@ -65,11 +74,6 @@ export default function Sidebar() {
       icon: Users,
       href: "/dashboard/testimonials",
     },
-    {
-        title: "Contact",
-        icon: BookOpen,
-        href: "/dashboard/contact",
-      },
     {
       title: "Settings",
       icon: Settings,
@@ -122,9 +126,7 @@ export default function Sidebar() {
           </nav>
         </div>
         <div className="mt-auto p-4">
-          <Button size="sm" className="w-full">
-            Logout
-          </Button>
+          <LogoutButton />
         </div>
       </div>
     </div>

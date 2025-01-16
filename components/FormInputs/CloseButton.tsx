@@ -4,7 +4,7 @@ import Link from "next/link";
  
 export default function CloseButton({
 href,
-parent = "inventory",
+parent = "",
 }: {
 href: string,
 parent?: string,

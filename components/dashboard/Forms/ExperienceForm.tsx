@@ -38,7 +38,7 @@ type ExperienceFormProps = {
     projectCategories?: SelectOptionProps[];
 }
 
-export default function ProjectForm({
+export default function ExperienceForm({
 editingId,
 initialData,
 projectCategories,

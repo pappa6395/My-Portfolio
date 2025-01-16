@@ -2,7 +2,7 @@ import { BlogCategory, Blogs, Settings } from '@prisma/client'
 import React from 'react'
 import { Button } from './ui/button';
 import Image from 'next/image'
-import { getBlogDate } from '@/utils/getBlogDate';
+import { getBlogDate, getShortBlogDate } from '@/utils/getBlogDate';
 import Link from 'next/link';
 import parse from 'html-react-parser';
 import { Calendar } from 'lucide-react';
@@ -49,17 +49,22 @@ const BlogDetail = ({
                                     alt={settings?.profileName || ""} 
                                     width={400} 
                                     height={400}
-                                    className='size-12 object-cover rounded-full'
+                                    className='size-10 md:size-12 object-cover rounded-full'
                                 />
                             </Link>
-                            <p>
+                            <p className='text-xs md:text-base'>
                                 {settings?.profileName}
                             </p>
                         </div>
-                        <div className='flex gap-2'>
-                            <Calendar />
-                            <p>{getBlogDate(blog.createdAt)}</p>
+                        <div className='flex items-center gap-2'>
+                            <Calendar className='size-4 md:size-6' />
+                            <p className='text-xs md:text-base'>{getShortBlogDate(blog.createdAt)}</p>
                         </div>
+                        <div className='hidden md:block'>
+                            <ShareBlog productUrl={blogUrl} />
+                        </div>
+                    </div>
+                    <div className='block md:hidden'>
                         <ShareBlog productUrl={blogUrl} />
                     </div>
                     <div>
@@ -71,7 +76,10 @@ const BlogDetail = ({
                             className='w-full rounded-lg'
                         />
                     </div>
-                    <div className='py-6 prose lg:prose-xl'>
+                    <div className='py-6 prose lg:prose-xl 
+                    dark:text-slate-50 dark:prose-headings:text-slate-50
+                    dark:prose-strong:text-slate-50'
+                    >
                         {parse(blog.content || "No content found")}
                     </div>
                 </div>

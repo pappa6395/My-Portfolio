@@ -48,7 +48,7 @@ const AboutSection = ({siteSettings}: {siteSettings: Settings | null}) => {
         <h2 className='scroll-m-20 text-4xl py-2 lg:text-5xl leading-[4.5rem]'>
             {siteSettings?.profileLineOne || ""}
         </h2>
-        <p className='bg-lime-400 w-fit px-4 py-2 rounded-full 
+        <p className='bg-lime-400 w-full lg:w-fit px-2 lg:px-4 py-2 rounded-full 
             -rotate-2 text-3xl lg:text-4xl inline-block'>
         {siteSettings?.profileLineTwo || ""}
         </p> 

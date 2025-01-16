@@ -29,6 +29,7 @@ import { deleteSkillById } from "@/actions/skills";
 import { deleteServiceById } from "@/actions/services";
 import { deleteExperienceById } from "@/actions/experiences";
 import { deleteBlogById } from "@/actions/blogs";
+import { deleteToolById } from "@/actions/tools";
  
 type ActionColumnProps = {
   row: any;
@@ -61,6 +62,12 @@ export default function ActionColumn({
         toast.success(`${model} Deleted Successfully`);
       } else if (model === "skill") {
         const res = await deleteSkillById(id);
+        if (res?.ok) {
+          window.location.reload();
+        }
+        toast.success(`${model} Deleted Successfully`);
+      } else if (model === "tool") {
+        const res = await deleteToolById(id);
         if (res?.ok) {
           window.location.reload();
         }

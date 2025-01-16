@@ -56,27 +56,27 @@ const ShareBlog: React.FC<SocialShareProps> = ({ productUrl }) => {
       <FaXTwitter
         onClick={() => handleShareClick("twitter")}
         style={{ cursor: "pointer" }}
-        className="w-7 h-7  duration-300"
+        className="size-4 md:size-7  duration-300"
       />
       <FaWhatsapp
         onClick={() => handleShareClick("whatsapp")}
         style={{ cursor: "pointer" }}
-        className="w-7 h-7 text-green-600 duration-300"
+        className="size-4 md:size-7 text-green-600 duration-300"
       />
       <FaLinkedin
         onClick={() => handleShareClick("linkedin")}
         style={{ cursor: "pointer" }}
-        className="w-7 h-7 text-blue-600 duration-300"
+        className="size-4 md:size-7 text-blue-600 duration-300"
       />
       <FaFacebook
         onClick={() => handleShareClick("facebook")}
         style={{ cursor: "pointer" }}
-        className="w-7 h-7 text-blue-600 duration-300"
+        className="size-4 md:size-7 text-blue-600 duration-300"
       />
       <MdContentCopy
         onClick={handleCopyClick}
         style={{ cursor: "pointer" }}
-        className="w-7 h-7 duration-300"
+        className="size-4 md:size-7 duration-300"
       />
     </div>
   );

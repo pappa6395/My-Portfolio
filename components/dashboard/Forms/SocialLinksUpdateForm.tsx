@@ -126,7 +126,7 @@ export default function SocialLinksUpdateForm({settings}: {settings: Settings | 
         <div className='mt-2 pt-4'>
           <SubmitButton
           buttonIcon={CircleCheck}
-            title={"Send Message"}
+            title={"Update Settings"}
             loading={isLoading}
           />
         </div>

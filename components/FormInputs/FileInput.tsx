@@ -21,11 +21,11 @@ return (
   <CardHeader>
     <CardTitle>{title}</CardTitle>
   </CardHeader>
-  <CardContent>
-    <div className="w-full grid gap-2">
+  <CardContent className="flex flex-col items-center justify-center">
+    <div className="w-full md:w-32 gap-2">
         <Link href={fileUrl} className="flex items-center" download target="_blank">
           <FaFilePdf className="size-12 mr-2 text-red-600" />
-          <span>{fileUrl}</span>
+          <span className="truncate">{fileUrl}</span>
         </Link>
       <UploadButton
         className="col-span-full"

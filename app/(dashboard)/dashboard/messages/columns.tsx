@@ -72,14 +72,14 @@ export const columns: ColumnDef<Message>[] = [
               <DialogHeader>
                 <DialogTitle>Message from {message.firstName}</DialogTitle>
                 <DialogDescription className="py-4">
-                  {message.message}
+                  <span className="text-lg">{message.message}</span>
                   <Link
                     target="_blank"
                     href={`https://mail.google.com/mail/?view=cm&fs=1&to=${message.email}&su=Your+Subject+Here&body=Your+Body+here`}
-                    className="flex items-center gap-2 "
+                    className="flex items-center gap-2"
                     >
                     <Mail className="text-blue-500"/>
-                    <span className="font-semibold">Reply</span>to{" "} {message.email}
+                    <span className="font-semibold underline text-blue-500">Reply</span>to{" "} {message.email}
                   </Link>
                 </DialogDescription>
               </DialogHeader>

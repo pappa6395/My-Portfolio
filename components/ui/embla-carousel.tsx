@@ -38,11 +38,11 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
               <div className="relative mb-6 sm:mb-0">
                     <h2 className='mb-4 font-semibold text-center dark:text-lime-400 text-lime-600 '>{experience.period}</h2>
                     <div className="flex items-center">
-                    <div className="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
+                        <div className="flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
                         <div className="z-10 flex items-center justify-center w-8 h-8 bg-lime-100 rounded-full ring-0 ring-white dark:bg-lime-500 sm:ring-8 dark:ring-gray-900 shrink-0">
                             <Calendar className="w-4 h-4 text-lime-800 dark:text-lime-800"/>
                         </div>
-                        <div className="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
+                        <div className="flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
                     </div>
                     <div className="mt-3 sm:pe-8 space-y-3 text-center px-8">
                         <h3 className="text-lg font-semibold text-gray-900 

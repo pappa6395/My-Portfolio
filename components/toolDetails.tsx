@@ -8,6 +8,8 @@ import { cn } from '@/lib/utils'
 import { IconProps, IconType } from './TechStack'
 import { GiArtificialIntelligence } from 'react-icons/gi'
 import { PiOpenAiLogoLight } from 'react-icons/pi'
+import { Tools } from '@prisma/client'
+import Image from 'next/image'
 
 
 interface ToolsStackProps {
@@ -17,64 +19,64 @@ interface ToolsStackProps {
     color: string
 }
 
-const ToolDetails = () => {
+const ToolDetails = ({allTools}: {allTools: Tools[]}) => {
 
-    const toolsStacks: ToolsStackProps[] = [
-            {
-                title: "GitHub",
-                icon: FaGithub,
-                percent: 95,
-                color: "text-cyan-400"
-            },
-            {
-                title: "Vercel",
-                icon: IoLogoVercel,
-                percent: 95,
-                color: "text-emerald-400"
-            },
-            {
-                title: "Postman",
-                icon: SiPostman,
-                percent: 90,
-                color: "text-orange-400"
-            },
-            {
-                title: "Docker",
-                icon: FaDocker,
-                percent: 90,
-                color: "text-sky-400"
-            },
-            {
-                title: "Firebase",
-                icon: SiFirebase,
-                percent: 90,
-                color: "text-red-400"
-            },
-            {
-                title: "DBeaver",
-                icon: SiDbeaver,
-                percent: 90,
-                color: "text-amber-700"
-            },
-            {
-                title: "ChatGPT",
-                icon: PiOpenAiLogoLight,
-                percent: 95,
-                color: "text-indigo-400"
-            },
-            {
-                title: "Visual Studio",
-                icon: DiVisualstudio,
-                percent: 95,
-                color: "text-blue-500"
-            },
-        ]
+    // const toolsStacks: ToolsStackProps[] = [
+    //         {
+    //             title: "GitHub",
+    //             icon: FaGithub,
+    //             percent: 95,
+    //             color: "text-cyan-400"
+    //         },
+    //         {
+    //             title: "Vercel",
+    //             icon: IoLogoVercel,
+    //             percent: 95,
+    //             color: "text-emerald-400"
+    //         },
+    //         {
+    //             title: "Postman",
+    //             icon: SiPostman,
+    //             percent: 90,
+    //             color: "text-orange-400"
+    //         },
+    //         {
+    //             title: "Docker",
+    //             icon: FaDocker,
+    //             percent: 90,
+    //             color: "text-sky-400"
+    //         },
+    //         {
+    //             title: "Firebase",
+    //             icon: SiFirebase,
+    //             percent: 90,
+    //             color: "text-red-400"
+    //         },
+    //         {
+    //             title: "DBeaver",
+    //             icon: SiDbeaver,
+    //             percent: 90,
+    //             color: "text-amber-700"
+    //         },
+    //         {
+    //             title: "ChatGPT",
+    //             icon: PiOpenAiLogoLight,
+    //             percent: 95,
+    //             color: "text-indigo-400"
+    //         },
+    //         {
+    //             title: "Visual Studio",
+    //             icon: DiVisualstudio,
+    //             percent: 95,
+    //             color: "text-blue-500"
+    //         },
+    //     ]
 
   return (
 
     <div className="grid grid-cols-2 lg:grid-cols-4 py-8 gap-6">
-        {toolsStacks?.map((tool,i) => {
-            const Icon = tool.icon;
+        {allTools?.map((tool,i) => {
+            const percentage = tool?.percent ?? 0
             return (
                 <div key={i} className="w-fit border rounded-xl shadow-lg p-3 dark:border-gray-800">
                     <div className="relative size-32 px-2">
@@ -92,19 +94,25 @@ const ToolDetails = () => {
                                     className="stroke-current text-lime-500 dark:text-lime-500" 
                                     strokeWidth="1" 
                                     strokeDasharray="100" 
-                                    strokeDashoffset={`${100-tool.percent}`} 
+                                    strokeDashoffset={`${100-percentage}`} 
                                     strokeLinecap="round"
                                 ></circle>
                         </svg>
-                        <div className="absolute pt-2 gap-1 flex flex-col items-center top-1/2 start-1/2 transform -translate-y-1/2 -translate-x-1/2">
-                            <Icon className={cn("size-10 flex-shrink-0", tool.color)} />
+                        <div className="absolute pt-2 gap-1 flex flex-col items-center 
+                        top-1/2 start-1/2 transform -translate-y-1/2 -translate-x-1/2">
+                            <Image 
+                                src={`${tool?.iconUrl || "/defaultImage.png"}`} 
+                                alt="icon" 
+                                width={200} 
+                                height={200} 
+                                className="size-8 flex-shrink-0" />
                             <span className="text-center text-base font-sm text-slate-800 dark:text-slate-50">
-                                {tool.percent}%
+                                {tool?.percent || 0}%
                             </span>
                         </div>
                     </div>
                     <div className='text-center pt-2'>
-                        <p>{tool.title}</p>
+                        <p>{tool?.title}</p>
                     </div>
                 </div> 
             )

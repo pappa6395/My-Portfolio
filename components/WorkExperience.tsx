@@ -6,11 +6,19 @@ import EmblaCarousel from './ui/embla-carousel'
 import { EmblaOptionsType } from 'embla-carousel'
 import CoursesCarousel from './carousel/courses-carousel'
 import EducationCarousel from './carousel/education-carousel'
-import { Experiences } from '@prisma/client'
+import { Courses, Educations, Experiences } from '@prisma/client'
 
 
 
-const WorkExperience = ({allExperiences}: {allExperiences: Experiences[]}) => {
+const WorkExperience = ({
+    allExperiences,
+    allCourses,
+    allEducations,
+}: {
+    allExperiences: Experiences[]
+    allCourses: Courses[]
+    allEducations: Educations[]
+}) => {
 
     const OPTIONS: EmblaOptionsType = { slidesToScroll: "auto" }
     const SLIDE_COUNT = 10
@@ -30,11 +38,11 @@ const WorkExperience = ({allExperiences}: {allExperiences: Experiences[]}) => {
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-6 mt-4'>
             <div>
                 <SectionSubHeading title={"Courses"} icon={IoBriefcaseOutline}/>
-                <CoursesCarousel />
+                <CoursesCarousel courses={allCourses} />
             </div>
             <div className=''>
                 <SectionSubHeading title={"Education"} icon={IoBriefcaseOutline}/>
-                <EducationCarousel />
+                <EducationCarousel educations={allEducations} />
             </div>
         </div>
     </div>

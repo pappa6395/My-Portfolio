@@ -1,17 +1,34 @@
 import React from "react";
 import Link from "next/link";
 import {
+  Airplay,
   Bell,
+  BookCheck,
+  BookOpen,
+  Boxes,
   CircleUser,
+  Cpu,
   Home,
+  Laptop,
+  LayoutGrid,
   LineChart,
   Menu,
+  MonitorCog,
   Package,
   Package2,
+  Pencil,
   Search,
+  Send,
+  Settings,
+  Settings2,
   ShoppingCart,
   Users,
 } from "lucide-react";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/components/ui/avatar"
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -31,8 +48,65 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-export default function DashboardNavbar() {
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { Session } from "next-auth";
+import { getInitials } from "@/utils/getInitials";
+import LogoutButton from "../logoutButton";
+export default function DashboardNavbar({session}: {session: Session}) {
+
+  const navLinks = [
+    {
+        title: "Dashboard",
+        icon: Home,
+        href: "/dashboard",
+      },
+    {
+      title: "Projects",
+      icon: LayoutGrid,
+      href: "/dashboard/projects",
+    },
+    {
+      title: "Skills",
+      icon: Boxes,
+      href: "/dashboard/skills",
+    },
+    {
+      title: "Tool",
+      icon: MonitorCog,
+      href: "/dashboard/tools",
+    },
+    {
+      title: "Services",
+      icon: Laptop,
+      href: "/dashboard/services",
+    },
+    {
+      title: "Resume",
+      icon: BookCheck,
+      href: "/dashboard/resume",
+    },
+    {
+      title: "Blogs",
+      icon: Pencil,
+      href: "/dashboard/blogs",
+    },
+    {
+      title: "Messages",
+      icon: Send,
+      href: "/dashboard/messages",
+    },
+    {
+      title: "Testimonials",
+      icon: Users,
+      href: "/dashboard/testimonials",
+    },
+    {
+      title: "Settings",
+      icon: Settings,
+      href: "/dashboard/settings",
+    },
+  ];
+
   return (
     <header className="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
       <Sheet>
@@ -42,70 +116,39 @@ export default function DashboardNavbar() {
             <span className="sr-only">Toggle navigation menu</span>
           </Button>
         </SheetTrigger>
-        <SheetContent side="left" className="flex flex-col">
+        <SheetHeader>
+          <SheetTitle>
+              {getInitials(session.user.name)}
+          </SheetTitle>
+        </SheetHeader>
+        <SheetDescription></SheetDescription>
+        <SheetContent side="left" className="flex justify-between flex-col">
           <nav className="grid gap-2 text-lg font-medium">
             <Link
-              href="#"
+              href="/dashboard"
               className="flex items-center gap-2 text-lg font-semibold"
             >
-              <Package2 className="h-6 w-6" />
-              <span className="sr-only">Acme Inc</span>
+              <Cpu className="h-6 w-6" />
+              <span className="">PAP web solution</span>
             </Link>
-            <Link
-              href="#"
-              className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-            >
-              <Home className="h-5 w-5" />
-              Dashboard
-            </Link>
-            <Link
-              href="#"
-              className="mx-[-0.65rem] flex items-center gap-4 rounded-xl bg-muted px-3 py-2 text-foreground hover:text-foreground"
-            >
-              <ShoppingCart className="h-5 w-5" />
-              Orders
-              <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
-                6
-              </Badge>
-            </Link>
-            <Link
-              href="#"
-              className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-            >
-              <Package className="h-5 w-5" />
-              Products
-            </Link>
-            <Link
-              href="#"
-              className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-            >
-              <Users className="h-5 w-5" />
-              Customers
-            </Link>
-            <Link
-              href="#"
-              className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-            >
-              <LineChart className="h-5 w-5" />
-              Analytics
-            </Link>
+            { navLinks.map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <Link
+                  href={item.href}
+                  key={i}
+                  className="flex items-center text-lg font-medium 
+                  px-3 py-2 gap-4 text-muted-foreground hover:text-foreground
+                  rounded-xl"
+                >
+                  <Icon className="h-5 w-5" />
+                  {item.title}
+                </Link>
+              )
+            }) }
+            
           </nav>
-          <div className="mt-auto">
-            <Card>
-              <CardHeader>
-                <CardTitle>Upgrade to Pro</CardTitle>
-                <CardDescription>
-                  Unlock all features and get unlimited access to our support
-                  team.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Button size="sm" className="w-full">
-                  Upgrade
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
+          <LogoutButton variant={"default"} />
         </SheetContent>
       </Sheet>
       <div className="w-full flex-1">
@@ -123,17 +166,25 @@ export default function DashboardNavbar() {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="secondary" size="icon" className="rounded-full">
-            <CircleUser className="h-5 w-5" />
-            <span className="sr-only">Toggle user menu</span>
+            <Avatar>
+              <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+              <AvatarFallback>{getInitials(session.user.name)}</AvatarFallback>
+            </Avatar>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuLabel>My Account</DropdownMenuLabel>
+          <DropdownMenuLabel>
+            <div>
+              <h2>{session.user.name}</h2>
+              <p className="text-xs text-muted-foreground">
+                {session.user.email}
+              </p>
+            </div>
+          </DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>Settings</DropdownMenuItem>
-          <DropdownMenuItem>Support</DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>Logout</DropdownMenuItem>
+          <DropdownMenuItem>
+            <LogoutButton />
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </header>

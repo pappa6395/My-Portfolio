@@ -8,3 +8,13 @@ export function getBlogDate(date: Date) {
     });
     return blogDate;
 }
+
+export function getShortBlogDate(date: Date) {
+    const blogDate = date.toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+        
+    });
+    return blogDate;
+}

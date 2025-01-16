@@ -163,8 +163,8 @@ const Projectz = ({projectCategories}: {projectCategories: ProjectCategoryProps[
                                             src={`${project?.imageUrl || "/defaultImage.png"}`}
                                             alt={"image"}
                                             className='rounded-2xl'
-                                            width={500}
-                                            height={500}
+                                            width={1280}
+                                            height={720}
                                         />
                                     </DialogTrigger>
                                     <DialogContent className="sm:max-w-[550px]">
@@ -216,16 +216,16 @@ const Projectz = ({projectCategories}: {projectCategories: ProjectCategoryProps[
                                 </Dialog>
                                 <Link 
                                     href={`${project.hostedLink || "#"}`} 
-                                    className='block py-2 p-3 hover:text-lime-400 duration-300'
+                                    className='block py-2 hover:text-lime-400 duration-300'
                                     target='_blank'>
                                     <h2 className='font-bold text-2xl'>{project?.title || ""}</h2>
                                 </Link>
-                                <div className='flex items-center justify-between'>
-                                    <div className='flex p-3 flex-wrap space-x-1'>
+                                <div className='flex items-center justify-between gap-2'>
+                                    <div className='flex flex-wrap space-x-2'>
                                         {project.tags && project?.tags.split(",").map((item,i) => {
                                             return (
                                                 <button key={i} className='dark:bg-slate-600 bg-slate-200 hover:bg-lime-500
-                                                rounded-full py-1 px-3 text-xs uppercase'>
+                                                rounded-full px-2 py-1 text-xs uppercase'>
                                                     {item}
                                                 </button>
 

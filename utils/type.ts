@@ -71,6 +71,13 @@ export type SkillProps = {
     percent: number;
 }
 
+export type ToolProps = {
+    title: string;
+    slug: string;
+    iconUrl: string;
+    percent: number;
+}
+
 export type ServiceProps = {
     title: string;
     slug: string;
@@ -84,6 +91,22 @@ export type ExperienceProps = {
     title: string;
     company: string;
     description: string;
+}
+
+export type CourseProps = {
+    period: string;
+    title: string;
+    school: string;
+    description: string;
+    certificate?: string;
+}
+
+export type EducationProps = {
+    period: string;
+    title: string;
+    school: string;
+    description: string;
+    certificate?: string;
 }
 
 export type ReviewCardProps = {

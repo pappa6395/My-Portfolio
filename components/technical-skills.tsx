@@ -12,10 +12,16 @@ import { cn } from '@/lib/utils'
 import { GiGears } from 'react-icons/gi'
 import ToolDetails from './toolDetails'
 import GeneralSkills from './general-skills'
-import { Skills } from '@prisma/client'
+import { Skills, Tools } from '@prisma/client'
 import Image from 'next/image'
 
-const TechnicalSkills = ({allSkills}: {allSkills: Skills[]}) => {
+const TechnicalSkills = ({
+    allSkills, 
+    allTools
+}: {
+    allSkills: Skills[]; 
+    allTools: Tools[];
+}) => {
 
     // const technologies = [
     //     {
@@ -52,14 +58,17 @@ const TechnicalSkills = ({allSkills}: {allSkills: Skills[]}) => {
             <SectionSubHeading title={"Technical skills"} icon={Dumbbell}/>
             <SectionHeading title={"Technologies"}/>
         </div>
-        <h3>Front-End Expertise</h3>
+        <h3>Fullstack Expertise</h3>
         <p className='text-base py-3'>
             I excel in creating intuitive, responsive, and accessible user 
-            interfaces using modern web technologies and frameworks, including:
+            interfaces using modern web technologies and frameworks. Also,
+            experience in server-side programming and database management,
+            I build secure, scalable systems using:
         </p>
-        <ul>React.js, Next.js: Crafting interactive SPAs and SSR solutions for optimized performance.</ul>
+        <ul>Next.js: Crafting interactive SPAs and SSR solutions for optimized performance.</ul>
         <ul>TypeScript: Ensuring scalable and type-safe codebases.</ul>
-        <ul>Tailwind CSS: Building clean and visually appealing designs efficiently.</ul>
+        <ul>Prisma: for seamless database management.</ul>
+        <ul>MongoDB: or efficient NoSQL data storage and querying.</ul>
         <div className='grid grid-cols-1 lg:grid-cols-2 py-8 gap-6'>
             {allSkills.map((tech,i) => {
                 return (
@@ -100,17 +109,13 @@ const TechnicalSkills = ({allSkills}: {allSkills: Skills[]}) => {
             <SectionHeading title={"Tools Stack"}/>
         </div>
         <div>
-          <h3>Back-End Proficiency</h3>
+          <h3>Tech Tools Proficiency</h3>
           <p className='text-base py-3'>
-          With hands-on experience in server-side programming and database management,
-          I build secure, scalable systems using
+          These tools streamline development workflows, foster collaboration,
+           and improve project quality and deployment efficiency.
           </p>
-          <ul>Node.js and Express.js: Creating robust APIs and server-side logic.</ul>
-          <ul>SQL and NoSQL Databases: Designing efficient schemas and optimizing data flow (PostgreSQL, Firebase).</ul>
-          <ul>Authentication: Implementing secure login/signup flows using Firebase and third-party OAuth services.</ul>
-            <ToolDetails />
+            <ToolDetails allTools={allTools || []} />
         </div>
-         <GeneralSkills />
          <div className='flex flex-col justify-center items-center border-none 
         space-x-6 rounded-full'>
             {/* <h2 className='font-bold text-xl pt-4'>My Tech Stack</h2> */}

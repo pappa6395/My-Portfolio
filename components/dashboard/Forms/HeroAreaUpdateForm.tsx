@@ -148,7 +148,7 @@ export default function HeroAreaUpdateForm({settings}: {settings: Settings | nul
         <div className='mt-2 pt-4'>
           <SubmitButton
           buttonIcon={CircleCheck}
-            title={"Send Message"}
+            title={"Update Settings"}
             loading={isLoading}
           />
         </div>

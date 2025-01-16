@@ -28,6 +28,13 @@ export const ourFileRouter = {
       // !!! Whatever is returned here is sent to the clientside `onClientUploadComplete` callback
       return { uploadedBy: "NP" };
     }),
+  toolIconUpdate: f({ image: { maxFileSize: "2MB"}})
+    .onUploadComplete(async ({ metadata, file }) => {
+      // This code RUNS ON YOUR SERVER after upload
+      console.log("file url", file.url);
+      // !!! Whatever is returned here is sent to the clientside `onClientUploadComplete` callback
+      return { uploadedBy: "NP" };
+    }),
   serviceIconUpdate: f({ image: { maxFileSize: "2MB"}})
     .onUploadComplete(async ({ metadata, file }) => {
       // This code RUNS ON YOUR SERVER after upload
@@ -43,6 +50,20 @@ export const ourFileRouter = {
       return { uploadedBy: "NP" };
     }),
   cvUpload: f({ pdf: { maxFileSize: "2MB"}})
+    .onUploadComplete(async ({ metadata, file }) => {
+      // This code RUNS ON YOUR SERVER after upload
+      console.log("file url", file.url);
+      // !!! Whatever is returned here is sent to the clientside `onClientUploadComplete` callback
+      return { uploadedBy: "NP" };
+    }),
+  certificateUpload: f({ pdf: { maxFileSize: "2MB"}})
+    .onUploadComplete(async ({ metadata, file }) => {
+      // This code RUNS ON YOUR SERVER after upload
+      console.log("file url", file.url);
+      // !!! Whatever is returned here is sent to the clientside `onClientUploadComplete` callback
+      return { uploadedBy: "NP" };
+    }),
+  educationUpload: f({ pdf: { maxFileSize: "2MB"}})
     .onUploadComplete(async ({ metadata, file }) => {
       // This code RUNS ON YOUR SERVER after upload
       console.log("file url", file.url);
