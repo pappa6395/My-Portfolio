@@ -1,15 +1,17 @@
 "use client";
 
-import ActionColumn from "@/components/DataTableColumns/Actions";
-import DateColumn from "@/components/DataTableColumns/DateColumn";
-import SortableColumn from "@/components/DataTableColumns/SortableColumn";
-import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
+import React from 'react'
+
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Experiences } from "@prisma/client";
 import { ColumnDef } from "@tanstack/react-table";
+import { Checkbox } from '@/components/ui/checkbox';
+import SortableColumn from '@/components/DataTableColumns/SortableColumn';
+import { Button } from '@/components/ui/button';
+import DateColumn from '@/components/DataTableColumns/DateColumn';
+import ActionColumn from '@/components/DataTableColumns/Actions';
 
-export const columns: ColumnDef<Experiences>[] = [
+const columns: ColumnDef<Experiences>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -90,3 +92,5 @@ export const columns: ColumnDef<Experiences>[] = [
     },
   },
 ];
+
+export default columns

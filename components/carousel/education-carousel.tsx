@@ -16,6 +16,7 @@ const EducationCarousel = ({educations}: {educations: Educations[]}) => {
                         <div className="size-2 rounded-full bg-gray-400 dark:bg-neutral-600"></div>
                     </div>
                 </div>
+                <div className='flex flex-col flex-wrap w-[360px] md:w-full'>
                 {educations.map((education, i) => {
                     return (
                         <div 
@@ -59,6 +60,8 @@ const EducationCarousel = ({educations}: {educations: Educations[]}) => {
                         </div>
                     )
                 })}
+                </div>
+                
             </div>
         </div>
     </div>

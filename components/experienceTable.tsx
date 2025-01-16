@@ -2,7 +2,8 @@ import React from 'react'
 import TableHeader from './DataTableComponents/TableHeader'
 import DataTable from './DataTableComponents/Datatable'
 import { Experiences } from '@prisma/client'
-import { columns } from '../app/(dashboard)/dashboard/resume/Columns'
+import columns from '@/app/(dashboard)/dashboard/resume/ExperienceColumns'
+
 
 
 const ExperienceTable = ({experiences}: {experiences: Experiences[]}) => {
