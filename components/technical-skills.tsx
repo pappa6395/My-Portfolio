@@ -103,7 +103,6 @@ const TechnicalSkills = ({
                 )
             })}
         </div>
-
         <div className='space-y-2'>
             <SectionSubHeading title={"Tool Skills"} icon={GiGears}/>
             <SectionHeading title={"Tools Stack"}/>
@@ -118,8 +117,6 @@ const TechnicalSkills = ({
         </div>
          <div className='flex flex-col justify-center items-center border-none 
         space-x-6 rounded-full'>
-            {/* <h2 className='font-bold text-xl pt-4'>My Tech Stack</h2> */}
-            {/* <TechStack /> */}
             <IconCloudGlobe />
         </div>   
     </div>

@@ -10,32 +10,73 @@ import { getSettings } from "@/actions/settings";
 import { getSkills } from "@/actions/skills";
 import { getTools } from "@/actions/tools";
 import AboutSection from "@/components/about-section";
-import BlogSection from "@/components/blogSection";
+import BlogSection, { IBlogCategory } from "@/components/blogSection";
 import Contact from "@/components/contact";
 import FixedSidebar from "@/components/fixed-sidebar";
 import Footer from "@/components/footer";
 import MobileNav from "@/components/mobileNav";
 import ProfileCard from "@/components/ProfileCard";
-import Projectz from "@/components/projectz";
+import Projectz, { ProjectCategoryProps } from "@/components/projectz";
 import ServicesListing from "@/components/ServicesListing";
 import TechnicalSkills from "@/components/technical-skills";
 import { Testimonial } from "@/components/testimonial";
 import VideoBackground from "@/components/video-background";
 import WorkExperience from "@/components/WorkExperience";
+import { ReviewCardProps } from "@/utils/type";
+import { Courses, Educations, Experiences, Services, Skills, Tools } from "@prisma/client";
 
 
 export default async function Home() {
 
-  const siteSettings = await getSettings() || null;
-  const projectCategories = await getProjectsByCategories() || [];
-  const allSkills = await getSkills() || [];
-  const allTools = await getTools() || [];
-  const allServices = await getServices() || [];
-  const allExperiences = await getExperiences() || [];
-  const allCourses = await getCourses() || [];
-  const allEducations = await getEducations() || [];
-  const reviews = (await getReviews())?.data || [];
-  const blogCategories = await getBlogsByCategories() || [];
+  let siteSettings = null;
+  let projectCategories = [] as ProjectCategoryProps[]
+  let allSkills = [] as Skills[]
+  let allTools = [] as Tools[]
+  let allServices = [] as Services[]
+  let allExperiences = [] as Experiences[]
+  let allCourses = [] as Courses[]
+  let allEducations = [] as Educations[]
+  let reviews = [] as ReviewCardProps[]
+  let blogCategories = [] as IBlogCategory[]
+
+  try {
+    const [
+      siteSettingsResponse, 
+      projectCategoriesResponse, 
+      allSkillsResponse, 
+      allToolsResponse,
+      allServicesResponse, 
+      allExperiencesResponse, 
+      allCoursesResponse,
+      allEducationsResponse, 
+      reviewsResponse, 
+      blogCategoriesResponse] = await Promise.all(
+        [
+          getSettings(),
+          getProjectsByCategories(),
+          getSkills(),
+          getTools(),
+          getServices(),
+          getExperiences(),
+          getCourses(),
+          getEducations(),
+          getReviews(),
+          getBlogsByCategories(),
+      ])
+      siteSettings = siteSettingsResponse || null;
+      projectCategories = projectCategoriesResponse || [];
+      allSkills = allSkillsResponse || [];
+      allTools = allToolsResponse || [];
+      allServices = allServicesResponse || [];
+      allExperiences = allExperiencesResponse || [];
+      allCourses = allCoursesResponse || [];
+      allEducations = allEducationsResponse || [];
+      reviews = reviewsResponse?.data || [];
+      blogCategories = blogCategoriesResponse || [];
+    
+  } catch (err) {
+    console.error("Failed to fetch data:", err);
+  }
   
 
   return (

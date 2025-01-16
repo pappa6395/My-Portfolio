@@ -37,7 +37,7 @@ type ProjectDetails = {
     previewLink: string;
 }
 
-interface ProjectCategoryProps extends ProjectCategory {
+export interface ProjectCategoryProps extends ProjectCategory {
     projects: Projects[]
 }
 

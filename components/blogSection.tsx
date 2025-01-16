@@ -12,7 +12,7 @@ import { BlogCategory, Blogs } from '@prisma/client'
 import { getBlogDate } from '@/utils/getBlogDate'
 
 
-interface IBlogCategory extends BlogCategory {
+export interface IBlogCategory extends BlogCategory {
     blogs: Blogs[]
 }
 

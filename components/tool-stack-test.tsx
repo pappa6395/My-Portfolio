@@ -2,7 +2,7 @@ import React from 'react'
 import { GiGears } from 'react-icons/gi'
 import SectionSubHeading from './SectionSubHeading'
 import SectionHeading from './SectionHeading'
-import ToolDetails from './toolDetails'
+
 
 const ToolsStack = () => {
 
@@ -24,7 +24,7 @@ const ToolsStack = () => {
           <ul>Node.js and Express.js: Creating robust APIs and server-side logic.</ul>
           <ul>SQL and NoSQL Databases: Designing efficient schemas and optimizing data flow (PostgreSQL, Firebase).</ul>
           <ul>Authentication: Implementing secure login/signup flows using Firebase and third-party OAuth services.</ul>
-            <ToolDetails />
+
         </div>
     </div>
 
