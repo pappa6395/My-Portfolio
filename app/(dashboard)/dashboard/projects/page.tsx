@@ -4,10 +4,16 @@ import { columns } from "./columns";
 import DataTable from "@/components/DataTableComponents/Datatable";
 import TableHeader from "@/components/DataTableComponents/TableHeader";
 import { getProjects } from "@/actions/projects";
+import { Projects } from "@prisma/client";
  
 export default async function page() {
 
-  const projects = (await getProjects()) || [];
+  let projects = [] as Projects[];
+  try {
+    projects = (await getProjects()) || [];
+  } catch (err) {
+    console.log("Failed to get projects:", err);
+  }
 
   return (
     <div className="p-8">

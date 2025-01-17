@@ -3,12 +3,17 @@ import { columns } from "./columns";
 
 import DataTable from "@/components/DataTableComponents/Datatable";
 import TableHeader from "@/components/DataTableComponents/TableHeader";
-import { getProjects } from "@/actions/projects";
 import { getServices } from "@/actions/services";
+import { Services } from "@prisma/client";
  
 export default async function page() {
 
-  const projects = (await getServices()) || [];
+  let services = [] as Services[]
+  try {
+    services = (await getServices()) || [];
+  } catch (err) {
+    console.log("Failed to get services:", err);
+  }
 
   return (
     <div className="p-8">
@@ -16,11 +21,11 @@ export default async function page() {
         title="Services"
         linkTitle="Add Service"
         href="/dashboard/services/new"
-        data={projects}
+        data={services}
         model="service"
       />
       <div className="py-8">
-        <DataTable data={projects} columns={columns} />
+        <DataTable data={services} columns={columns} />
       </div>
     </div>
   );

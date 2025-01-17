@@ -4,10 +4,16 @@ import { columns } from "./columns";
 import DataTable from "@/components/DataTableComponents/Datatable";
 import TableHeader from "@/components/DataTableComponents/TableHeader";
 import { getSkills } from "@/actions/skills";
+import { Skills } from "@prisma/client";
  
 export default async function page() {
 
-  const skills = (await getSkills()) || [];
+  let skills = [] as Skills[];
+  try {
+    skills = (await getSkills()) || [];
+  } catch (err) {
+    console.log("Failed to get skills:", err);
+  }
 
   return (
     <div className="p-8">

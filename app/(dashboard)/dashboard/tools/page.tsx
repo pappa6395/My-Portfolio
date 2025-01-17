@@ -4,10 +4,16 @@ import { columns } from "./columns";
 import DataTable from "@/components/DataTableComponents/Datatable";
 import TableHeader from "@/components/DataTableComponents/TableHeader";
 import { getTools } from "@/actions/tools";
+import { Tools } from "@prisma/client";
  
 export default async function page() {
 
-  const tools = (await getTools()) || [];
+  let tools = [] as Tools[];
+  try {
+    tools = (await getTools()) || [];
+  } catch (err) {
+    console.log("Failed to get tools:", err);
+  }
 
   return (
     <div className="p-8">

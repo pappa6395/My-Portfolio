@@ -7,14 +7,20 @@ import React from 'react';
 const page = async ({params: paramsPromise}: any) => {
 
   const { id } = await paramsPromise;
-  const toolById = await getToolById(id) || null;
+
+  let toolById = null;
+  try {
+    toolById = await getToolById(id) || null;
+  } catch (err) {
+    console.log("Failed to get tool:", err);
+  }
 
   return (
 
     <div>
         <ToolForm 
-          initialData={toolById}
-          editingId={id}
+          initialData={toolById ?? null}
+          editingId={id ?? ""}
         />
     </div>
 

@@ -10,15 +10,22 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { authOptions } from "@/config/auth";
-import { DollarSign, Pencil, Star } from "lucide-react";
+import { AnalyticProps } from "@/utils/type";
+import { DollarSign, Pencil } from "lucide-react";
 import { getServerSession } from "next-auth";
 import Link from "next/link";
 export default async function Dashboard() {
 
   const session = await getServerSession(authOptions);
-  const user = session?.user;
-  const analytics = await getAnalytics() || []
-  
+  const user = session?.user || undefined;
+
+  let analytics = [] as AnalyticProps[]
+  try {
+    analytics = await getAnalytics() || []
+  } catch (err) {
+    console.log("Failed to fetch analytics", err);
+    
+  }
 
   return (
     <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
@@ -52,26 +59,26 @@ export default async function Dashboard() {
         </Card>
       </div>
       <div className="py-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {analytics.map((item, i) => {
+        {analytics?.map((item, i) => {
           const Icon = item.icon;
           return (
             <Card key={i}>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">
-                  {item.title}
+                  {item?.title ?? ""}
                 </CardTitle>
                 <Icon className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardDescription className="text-sm">
-                {item.description}
+                {item?.description ?? ""}
               </CardDescription>
               <CardContent>
                 <div className="text-2xl font-bold">
-                  {item.symbol && item.symbol}
-                  {item.count}
+                  {item?.symbol && item?.symbol}
+                  {item?.count ?? 0}
                 </div>
                 <Link
-                  href={item.href}
+                  href={item?.href ?? "#"}
                   className="text-xs text-muted-foreground"
                 >
                   View Details

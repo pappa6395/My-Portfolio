@@ -6,14 +6,20 @@ import React from 'react'
 const page = async ({params: paramsPromise}: any) => {
 
   const { id } = await paramsPromise;
-  const service = await getServiceById(id) || null;
+
+  let service = null;
+  try {
+    service = await getServiceById(id) || null;
+  } catch (err) {
+    console.log("Failed to get service:", err);
+  }
   
   return (
 
     <div>
         <ServiceForm 
-          initialData={service}
-          editingId={id}
+          initialData={service ?? null}
+          editingId={id ?? ""}
         />
     </div>
 

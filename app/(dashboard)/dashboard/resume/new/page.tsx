@@ -1,16 +1,13 @@
-
-import ExperienceForm from '@/components/dashboard/Forms/ExperienceForm';
+import ExperienceForm from '@/components/dashboard/Forms/ExperienceForm'
 import React from 'react'
 
-
-const page = async () => {
+const page = () => {
 
   return (
 
     <div>
         <ExperienceForm />
     </div>
-
 
   )
 }

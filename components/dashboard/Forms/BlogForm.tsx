@@ -33,8 +33,6 @@ import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-
-
 type BlogFormProps = {
     editingId?: string | undefined;
     initialData?: Blogs | undefined | null;
@@ -97,54 +95,45 @@ const [step, setStep] = useState(1)
         console.log("value:", item);
     }
 
-async function saveCategory(data: BlogProps) {
+    async function saveCategory(data: BlogProps) {
 
-try {
-  setIsLoading(true);
-  data.slug = generateSlug(data.title);
-  data.imageUrl = imageUrl;
-  data.categoryId = selectedMainCategory?.value;
-  data.content = content;
- 
-  if (editingId) {
-    await updateBlogById(editingId, data);
-    console.log("UpdateData:", data);
-    setIsLoading(false);
-    // Toast
-    toast.success("Successfully Updated!");
-    //reset
-    reset();
-    //route
-    router.push("/dashboard/blogs");
-    setImageUrl("/placeholder.svg");
+        try {
+        setIsLoading(true);
+        data.slug = generateSlug(data.title);
+        data.imageUrl = imageUrl;
+        data.categoryId = selectedMainCategory?.value;
+        data.content = content;
+        
+            if (editingId) {
+                await updateBlogById(editingId, data);
+                console.log("UpdateData:", data);
+                setIsLoading(false);
+                // Toast
+                toast.success("Successfully Updated!");
+                //reset
+                reset();
+                //route
+                router.push("/dashboard/blogs");
+                setImageUrl("/placeholder.svg");
 
-  } else {
-    await createBlog(data);
-    console.log("CreateData:", data);
-    setIsLoading(false);
-    // Toast
-    toast.success("Successfully Created!");
-    //reset
-    reset();
-    //route
-    router.push("/dashboard/blogs");
-    setImageUrl("/placeholder.svg");
-  }
-} catch (error) {
-  setIsLoading(false);
-  console.log(error);
-}
- 
-}
-// async function handleDeleteAll() {
-// setLoading(true);
-// try {
-// await deleteManyCategories();
-// setLoading(false);
-// } catch (error) {
-// console.log(error);
-// }
-// }
+            } else {
+                await createBlog(data);
+                console.log("CreateData:", data);
+                setIsLoading(false);
+                // Toast
+                toast.success("Successfully Created!");
+                //reset
+                reset();
+                //route
+                router.push("/dashboard/blogs");
+                setImageUrl("/placeholder.svg");
+            }
+        } catch (error) {
+        setIsLoading(false);
+        console.log(error);
+        }
+        
+    }
  
     return (
     

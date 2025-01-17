@@ -4,17 +4,29 @@ import { getBlogDate } from '@/utils/getBlogDate';
 import Link from 'next/link';
 import React from 'react';
 import Image from 'next/image';
+import { IBlogCategoryProps } from '@/utils/type';
 
 
 const page = async ({params: paramsPromise}: any) => {
 
     const { slug } = await paramsPromise
-    const category = await getBlogCategoryBySlug(slug) || null;
+    let category = null;
+    try {
+        category = await getBlogCategoryBySlug(slug) || null;
+    } catch (err) {
+        console.log("Failed to fetch blog category data:",err)
+    }
 
     if (!category) {
         return <div>No blog category found with the given slug.</div>
     }
-    const otherCategories = await getOtherBlogCategories(category.id) || []
+
+    let otherCategories = [] as IBlogCategoryProps[]
+    try {
+        otherCategories = await getOtherBlogCategories(category.id) || []
+    } catch (err) {
+        console.log("Failed to fetch other blog categories:",err)
+    }
 
   return (
 
@@ -77,7 +89,7 @@ const page = async ({params: paramsPromise}: any) => {
                                     Categories
                                 </h2>
                                 <div className='inline-flex flex-col gap-3 pt-3'>
-                                    {otherCategories.map((category,i) => {
+                                    {otherCategories?.map((category,i) => {
                                         return (
                                             <Button asChild key={i} variant={"outline"}>
                                                 <Link 

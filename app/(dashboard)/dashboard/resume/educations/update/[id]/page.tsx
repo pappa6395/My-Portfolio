@@ -6,17 +6,22 @@ import React from 'react'
 const page = async ({params: paramsPromise}: any) => {
 
   const { id } = await paramsPromise;
-  const education = await getEducationById(id) || null;
+
+  let education = null;
+  try {
+    education = await getEducationById(id) || null;
+  } catch (err) {
+    console.log("Failed to get education:", err);
+  }
   
   return (
 
     <div>
-        <EducationForm 
-          initialData={education}
-          editingId={id}
-        />
+      <EducationForm 
+        initialData={education ?? null}
+        editingId={id ?? ""}
+      />
     </div>
-
 
   )
 }

@@ -3,12 +3,17 @@ import { columns } from "./columns";
 
 import DataTable from "@/components/DataTableComponents/Datatable";
 import TableHeader from "@/components/DataTableComponents/TableHeader";
-import { getMessages } from "@/actions/messages";
 import { getReviews } from "@/actions/reviews";
+import { ReviewCardProps } from "@/utils/type";
  
 export default async function page() {
 
-  const testimonials = (await getReviews())?.data || [];
+  let testimonials = [] as ReviewCardProps[];
+  try {
+    testimonials = (await getReviews())?.data || [];
+  } catch (err) {
+    console.log("Failed to get testimonials:", err);
+  }
 
   return (
     <div className="p-8">

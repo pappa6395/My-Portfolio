@@ -1,9 +1,7 @@
 "use client";
  
 import { ColumnDef } from "@tanstack/react-table";
-import { Message } from "@prisma/client";
 import ActionColumn from "@/components/DataTableColumns/Actions";
-import DateColumn from "@/components/DataTableColumns/DateColumn";
 import SortableColumn from "@/components/DataTableColumns/SortableColumn";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
@@ -15,11 +13,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import Link from "next/link";
-import { Mail } from "lucide-react";
 import { ReviewCardProps } from "@/utils/type";
 import { timeAgo } from "@/utils/timeAgo";
-
 
 
 export const columns: ColumnDef<ReviewCardProps>[] = [

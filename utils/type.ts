@@ -1,4 +1,6 @@
-import { UserRole } from "@prisma/client";
+import { BlogCategory, Blogs, UserRole } from "@prisma/client";
+import { LucideProps } from "lucide-react";
+import { ForwardRefExoticComponent, RefAttributes } from "react";
 
 export type RegisterInputProps = {
     name: string;
@@ -138,6 +140,14 @@ export type BlogCategoryProps = {
     slug: string;
 }
 
+export interface IBlogCategoryProps extends BlogCategoryProps {
+    blogs: Blogs[]
+}
+
+export interface IBlog extends Blogs {
+    category: BlogCategory
+}
+
 export type SelectOptionProps = {
     label: string;
     value: string;
@@ -148,3 +158,12 @@ export type CategoryFormProps = {
     initialData?: any | undefined | null;
     mainCategories: SelectOptionProps[];
 };
+
+export type AnalyticProps = {
+    title: string;
+    count: number;
+    href: string;
+    symbol: string;
+    icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
+    description: string;
+}

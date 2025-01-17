@@ -6,12 +6,31 @@ import { getEducations } from "@/actions/educations";
 import CourseTable from "@/components/courseTable";
 import EducationTable from "@/components/educationTable";
 import ExperienceTable from "@/components/experienceTable";
+import { Courses, Educations, Experiences } from "@prisma/client";
  
 export default async function page() {
 
-  const experiences = (await getExperiences()) || [];
-  const courses = (await getCourses()) || [];
-  const educations = (await getEducations()) || [];
+  let experiences = [] as Experiences[];
+  let courses = [] as Courses[];
+  let educations = [] as Educations[];
+  
+  try {
+    const [
+      experiencesResponse, 
+      coursesResonse, 
+      educationResonse
+    ] = await Promise.all([
+      getExperiences(),
+      getCourses(),
+      getEducations(),
+    ]);
+    experiences = experiencesResponse || [];
+    courses = coursesResonse || [];
+    educations = educationResonse || [];
+
+  } catch (err) {
+    console.log("Failed to get experiences, courses, or educations:", err);
+  }
 
   return (
     <div className="p-8">

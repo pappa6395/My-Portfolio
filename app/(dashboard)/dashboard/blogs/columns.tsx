@@ -1,7 +1,6 @@
 "use client";
  
 import { ColumnDef } from "@tanstack/react-table";
-import { BlogCategory, Blogs, Message, Projects } from "@prisma/client";
 import ActionColumn from "@/components/DataTableColumns/Actions";
 import DateColumn from "@/components/DataTableColumns/DateColumn";
 import SortableColumn from "@/components/DataTableColumns/SortableColumn";
@@ -16,12 +15,10 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import Link from "next/link";
-import { ExternalLink, Mail } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import ImageColumn from "@/components/DataTableColumns/ImageColumn";
+import { IBlog } from "@/utils/type";
 
-interface IBlog extends Blogs {
-  category: BlogCategory
-}
 
 export const columns: ColumnDef<IBlog>[] = [
   {

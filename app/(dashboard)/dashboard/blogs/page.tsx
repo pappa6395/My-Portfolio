@@ -4,10 +4,17 @@ import { columns } from "./columns";
 import DataTable from "@/components/DataTableComponents/Datatable";
 import TableHeader from "@/components/DataTableComponents/TableHeader";
 import { getBlogs } from "@/actions/blogs";
+import { IBlog } from "@/utils/type";
+
  
 export default async function page() {
 
-  const blogs = (await getBlogs()) || [];
+  let blogs = [] as IBlog[]
+  try {
+    blogs = (await getBlogs()) || []
+  } catch (err) {
+    console.log("Failed to fetch blogs", err);
+  }
 
   return (
     <div className="p-8">

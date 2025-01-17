@@ -15,21 +15,11 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
-import {
-Options,
-SelectValue,
-} from "react-tailwindcss-select/dist/components/type";
 import FormFooter from "@/components/FormInputs/FormFooter";
-import ImageInput from "@/components/FormInputs/ImageInput";
-import FormSelectInput from "@/components/FormInputs/FormSelectInput";
 import TextInput from "@/components/FormInputs/TextInput";
 import TextArea from "@/components/FormInputs/TextAreaInput";
-import generateSlug from "@/utils/generateSlug";
-import { ExperienceProps, ProjectProps, SelectOptionProps, ServiceProps } from "@/utils/type";
-import { Experiences, Projects, Services } from "@prisma/client";
-import ProjectCategoryForm from "./ProjectCategoryForm";
-import { createProject, updateProjectById } from "@/actions/projects";
-import { createService, updateServiceById } from "@/actions/services";
+import { ExperienceProps, SelectOptionProps } from "@/utils/type";
+import { Experiences } from "@prisma/client";
 import { createExperience, updateExperienceById } from "@/actions/experiences";
 
 type ExperienceFormProps = {

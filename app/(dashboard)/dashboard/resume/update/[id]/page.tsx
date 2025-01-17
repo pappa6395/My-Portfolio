@@ -5,20 +5,27 @@ import React from 'react'
 
 const page = async ({params: paramsPromise}: any) => {
 
-  const { id } = await paramsPromise;
-  const experience = await getExperienceById(id) || null;
+    const { id } = await paramsPromise;
+    
+    let experience = null;
+    
+    try {
+        experience = await getExperienceById(id) || null;
+    } catch (err) {
+        console.log("Failed to get experience:", err);
+    }
+    
+    return (
   
-  return (
-
-    <div>
-        <ExperienceForm 
-          initialData={experience}
-          editingId={id}
-        />
-    </div>
-
-
-  )
+      <div>
+          <ExperienceForm 
+            initialData={experience ?? null}
+            editingId={id ?? ""}
+          />
+      </div>
+  
+  
+    )
 }
 
 export default page
