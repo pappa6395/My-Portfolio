@@ -41,6 +41,8 @@ import { ListFilter } from "lucide-react";
 import DateFilters from "./DateFilters";
 import DateRangeFilter from "./DateRangeFilter";
 import { DataTablePagination } from "./DataTablePagination";
+import { cn } from "@/lib/utils";
+import { Message } from "@prisma/client";
  
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -153,14 +155,18 @@ export default function DataTable<TData, TValue>({
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
                 >
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
-                    </TableCell>
-                  ))}
+                  {row.getVisibleCells().map((cell) => {
+                    const message = cell.row.original as Message
+                    return (
+                      <TableCell key={cell.id} className={cn("text-sm font-normal",
+                       message.isNew ? "bg-green-200 dark:bg-green-700" : "")}>
+                          {flexRender(
+                            cell.column.columnDef.cell,
+                            cell.getContext()
+                          )}
+                      </TableCell>
+                    )
+                  })}
                 </TableRow>
               ))
             ) : (

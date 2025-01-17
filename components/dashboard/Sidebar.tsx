@@ -9,6 +9,7 @@ import {
   BookOpen,
   Boxes,
   Computer,
+  Dot,
   ExternalLink,
   Home,
   Laptop,
@@ -25,8 +26,9 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import LogoutButton from "../logoutButton";
+import { Message } from "@prisma/client";
 
-export default function Sidebar() {
+export default function Sidebar({messages}: {messages: Message[]}) {
 
   const navLinks = [
     {
@@ -81,6 +83,9 @@ export default function Sidebar() {
     },
   ];
   const pathname = usePathname();
+
+  const hasNewMessages = messages.some((message) => message.isNew);
+
   return (
     <div className="hidden border-r bg-muted/40 md:block">
       <div className="flex h-full max-h-screen flex-col gap-2">
@@ -92,10 +97,22 @@ export default function Sidebar() {
             <Computer className="h-6 w-6" />
             <span className="">NP Web developer </span>
           </Link>
-          <Button variant="outline" size="icon" className="ml-auto h-8 w-8">
-            <Bell className="h-4 w-4" />
-            <span className="sr-only">Toggle notifications</span>
-          </Button>
+          <div className="flex ml-4">
+            <Button 
+              type="button" 
+              variant="outline" 
+              size="icon" 
+              className="ml-auto relative h-8 w-8"
+            >
+                <Bell className="h-4 w-4" />
+                <span className="sr-only">Toggle notifications</span>
+            </Button>
+            {hasNewMessages === true ? (
+              <Link href={`/dashboard/messages`} className="absolute">
+                <Dot className="absolute size-12 text-green-500"/>
+              </Link>
+              ) : "" }
+          </div>
         </div>
         <div className="flex-1">
           <nav className="grid items-start px-2 text-sm font-medium lg:px-4">

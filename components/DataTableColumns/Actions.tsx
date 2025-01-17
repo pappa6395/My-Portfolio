@@ -30,6 +30,8 @@ import { deleteServiceById } from "@/actions/services";
 import { deleteExperienceById } from "@/actions/experiences";
 import { deleteBlogById } from "@/actions/blogs";
 import { deleteToolById } from "@/actions/tools";
+import { deleteCourseById } from "@/actions/courses";
+import { deleteEducationById } from "@/actions/educations";
  
 type ActionColumnProps = {
   row: any;
@@ -48,7 +50,7 @@ export default function ActionColumn({
 
   async function handleDelete() {
     try {
-      if (model === "contact") {
+      if (model === "message") {
         const res = await deleteMessage(id);
         if (res?.ok) {
           window.location.reload();
@@ -80,6 +82,18 @@ export default function ActionColumn({
         toast.success(`${model} Deleted Successfully`);
       }  else if (model === "experience") {
         const res = await deleteExperienceById(id);
+        if (res?.ok) {
+          window.location.reload();
+        }
+        toast.success(`${model} Deleted Successfully`);
+      }  else if (model === "experience") {
+        const res = await deleteCourseById(id);
+        if (res?.ok) {
+          window.location.reload();
+        }
+        toast.success(`${model} Deleted Successfully`);
+      }  else if (model === "experience") {
+        const res = await deleteEducationById(id);
         if (res?.ok) {
           window.location.reload();
         }

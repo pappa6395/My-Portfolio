@@ -20,6 +20,7 @@ export type ContactProps = {
     lastName: string;
     email: string;
     message: string;
+    isNew?: boolean;
 };
 
 export type ContactSettingProps = {

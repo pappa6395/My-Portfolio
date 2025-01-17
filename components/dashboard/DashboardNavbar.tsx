@@ -39,27 +39,26 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Session } from "next-auth";
 import { getInitials } from "@/utils/getInitials";
 import LogoutButton from "../logoutButton";
-export default function DashboardNavbar({session}: {session: Session}) {
+import { ModeToggle } from "../mode-toggle";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "../ui/dropdown-menu";
+export default function DashboardNavbar({
+  session,
+}: {
+  session: Session;
+}) {
 
   const navLinks = [
     {
         title: "Dashboard",
         icon: Home,
         href: "/dashboard",
-      },
+    },
     {
       title: "Projects",
       icon: LayoutGrid,
@@ -122,7 +121,7 @@ export default function DashboardNavbar({session}: {session: Session}) {
           </SheetTitle>
         </SheetHeader>
         <SheetDescription></SheetDescription>
-        <SheetContent side="left" className="flex justify-between flex-col">
+        <SheetContent side="left" className="flex w-[280px] justify-between flex-col">
           <nav className="grid gap-2 text-lg font-medium">
             <Link
               href="/dashboard"
@@ -137,7 +136,7 @@ export default function DashboardNavbar({session}: {session: Session}) {
                 <Link
                   href={item.href}
                   key={i}
-                  className="flex items-center text-lg font-medium 
+                  className="pt-3 flex items-center text-base font-medium 
                   px-3 py-2 gap-4 text-muted-foreground hover:text-foreground
                   rounded-xl"
                 >
@@ -146,7 +145,6 @@ export default function DashboardNavbar({session}: {session: Session}) {
                 </Link>
               )
             }) }
-            
           </nav>
           <LogoutButton variant={"default"} />
         </SheetContent>
@@ -163,6 +161,7 @@ export default function DashboardNavbar({session}: {session: Session}) {
           </div>
         </form>
       </div>
+      <ModeToggle />
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="secondary" size="icon" className="rounded-full">

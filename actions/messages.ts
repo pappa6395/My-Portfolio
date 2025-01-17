@@ -30,6 +30,26 @@ export async function getMessages() {
     return null;
   }
 }
+
+export async function updateMessage(id: string, data: ContactProps) {
+  
+  console.log("Payload check:", id, data);
+  
+  try {
+    const updatedMessage = await db.message.update({
+      where: {
+        id,
+      },
+      data,
+    });
+    console.log("Updated message successful:", updatedMessage);
+    return updatedMessage;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}
+
 export async function deleteMessage(id: string) {
   if (id) {
     try {

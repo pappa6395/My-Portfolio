@@ -67,6 +67,7 @@ model Message {
   lastName    String
   email       String
   message     String
+  isNew       Boolean @default(true)
  
   createdAt DateTime  @default(now())
   updatedAt DateTime? @updatedAt

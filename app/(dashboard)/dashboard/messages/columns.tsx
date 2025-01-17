@@ -9,6 +9,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogHeader,
@@ -17,7 +18,9 @@ import {
 } from "@/components/ui/dialog"
 import Link from "next/link";
 import { Mail } from "lucide-react";
-
+import { useState } from "react";
+import { updateMessage } from "@/actions/messages";
+import { ContactProps } from "@/utils/type";
 
 
 export const columns: ColumnDef<Message>[] = [
@@ -60,11 +63,50 @@ export const columns: ColumnDef<Message>[] = [
     header: "View Message",
     cell: ({ row }) => {
       const message = row.original;
+      
+      const [data, setData] = useState<ContactProps>({
+        firstName: message.firstName,
+        lastName: message.lastName,
+        email: message.email,
+        message: message.message,
+        isNew: message.isNew,
+      })
+      const initialIsNew = message.isNew
+      const [isNewMessage, setIsNewMessage] = useState(initialIsNew)
+     
+      const handleToggleNew = () => {
+
+        setIsNewMessage(false);
+        setData((prev) => ({ ...prev, isNew: false }))
+        handleUpdate()
+      }
+
+      const handleReload = () => {
+        setTimeout(() => {
+          if (isNewMessage === false) window.location.reload();
+        }, 500)
+      }
+
+      const handleUpdate = async () => {
+        
+        let id = message.id
+        console.log(data);
+        data.isNew = false
+
+        try {
+          await updateMessage(id , data)
+          
+        } catch (err) {
+          console.log("Failed updating message:", err);
+          
+        }
+      }
+      
       return (
         <div className="">
           <Dialog>
             <DialogTrigger asChild>
-              <Button className="text-xs" variant="outline">
+              <Button type="submit" className="text-xs" variant="outline" onClick={handleToggleNew}>
                 View Message
               </Button>
             </DialogTrigger>
@@ -83,6 +125,9 @@ export const columns: ColumnDef<Message>[] = [
                   </Link>
                 </DialogDescription>
               </DialogHeader>
+              <DialogClose onClick={handleReload}>
+                Close
+              </DialogClose>
             </DialogContent>
           </Dialog>
         </div>
@@ -97,13 +142,13 @@ export const columns: ColumnDef<Message>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
-      const category = row.original;
+      const message = row.original;
       return (
         <ActionColumn
           row={row}
-          model="category"
-          editEndpoint={`categories/update/${category.id}`}
-          id={category.id}
+          model="message"
+          editEndpoint={`messages/update/${message.id}`}
+          id={message.id}
         />
       );
     },
