@@ -137,12 +137,12 @@ const Projectz = ({projectCategories}: {projectCategories: ProjectCategoryProps[
             <SectionHeading title={"Explore Portfolio By Technology"}/> 
         </div>
         <div className='py-5'>
-            <div className='flex flex-wrap gap-4'>
+            <div className='flex flex-wrap gap-2'>
                 {projectCategories.map((category, i) => {
                     return (
                         <button  
                         key={i} 
-                        className={cn('dark:bg-slate-600 bg-slate-200 py-2 px-6 text-sm rounded-full uppercase', 
+                        className={cn('dark:bg-slate-600 bg-slate-200 py-2 px-5 text-sm rounded-full uppercase', 
                         activeCategory.slug === category.slug && "bg-lime-500 dark:bg-lime-600")}
                         onClick={() => setActiveCategory(category)}
                         >
@@ -216,16 +216,16 @@ const Projectz = ({projectCategories}: {projectCategories: ProjectCategoryProps[
                                 </Dialog>
                                 <Link 
                                     href={`${project.hostedLink || "#"}`} 
-                                    className='block py-2 hover:text-lime-400 duration-300'
+                                    className='block py-2 px-2 hover:text-lime-400 duration-300'
                                     target='_blank'>
                                     <h2 className='font-bold text-2xl'>{project?.title || ""}</h2>
                                 </Link>
                                 <div className='flex items-center justify-between gap-2'>
-                                    <div className='flex flex-wrap space-x-2'>
+                                    <div className='flex p-2 flex-wrap space-x-1 md:space-x-2'>
                                         {project.tags && project?.tags.split(",").map((item,i) => {
                                             return (
                                                 <button key={i} className='dark:bg-slate-600 bg-slate-200 hover:bg-lime-500
-                                                rounded-full px-2 py-1 text-xs uppercase'>
+                                                rounded-full px-1 md:px-2 py-1 text-xs uppercase tracking-tight'>
                                                     {item}
                                                 </button>
 

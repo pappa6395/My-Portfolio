@@ -49,7 +49,7 @@ const AboutSection = ({siteSettings}: {siteSettings: Settings | null}) => {
             {siteSettings?.profileLineOne || ""}
         </h2>
         <p className='bg-lime-400 w-full lg:w-fit px-2 lg:px-4 py-2 rounded-full 
-            -rotate-2 text-3xl lg:text-4xl inline-block'>
+            -rotate-2  text-3xl lg:text-4xl inline-block'>
         {siteSettings?.profileLineTwo || ""}
         </p> 
         <span className='inline-block  pt-2 text-3xl md:text-4xl lg:text-5xl'>&nbsp;Based in</span>  
