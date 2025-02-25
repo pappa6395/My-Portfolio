@@ -162,9 +162,9 @@ const Projectz = ({projectCategories}: {projectCategories: ProjectCategoryProps[
                                         <Image 
                                             src={`${project?.imageUrl || "/defaultImage.png"}`}
                                             alt={"image"}
-                                            className='rounded-2xl'
-                                            width={1280}
-                                            height={720}
+                                            className='rounded-2xl aspect-video'
+                                            width={500}
+                                            height={500}
                                         />
                                     </DialogTrigger>
                                     <DialogContent className="sm:max-w-[550px]">
