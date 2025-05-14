@@ -34,6 +34,7 @@ export default function HeroAreaUpdateForm({settings}: {settings: Settings | nul
       profileLineThree: settings?.profileLineThree ?? "",
       profileName: settings?.profileName ?? "",
       animatedText: settings?.animatedText ?? "",
+      completedProject: settings?.completedProject ?? 0,
       monthOfExperience: settings?.monthOfExperience ?? 0,
       weekOfPractice: settings?.weekOfPractice ?? 0,
     },
@@ -47,6 +48,7 @@ export default function HeroAreaUpdateForm({settings}: {settings: Settings | nul
     setIsLoading(true);
     data.monthOfExperience = Number(data?.monthOfExperience);
     data.weekOfPractice = Number(data?.weekOfPractice);
+    data.completedProject = Number(data?.completedProject);
 
     try {
       
@@ -128,17 +130,23 @@ export default function HeroAreaUpdateForm({settings}: {settings: Settings | nul
                         </div>
                       <div className='grid grid-cols-2 gap-3'>
                         <TextInput
-                            register={register}
-                            errors={errors}
-                            label="Month of Experience"
-                            name="monthOfExperience"
-                            />
-                            <TextInput
-                            register={register}
-                            errors={errors}
-                            label="Week of Practice"
-                            name="weekOfPractice"
-                            />
+                          register={register}
+                          errors={errors}
+                          label="Completed Project"
+                          name="completedProject"
+                        />
+                        <TextInput
+                          register={register}
+                          errors={errors}
+                          label="Month of Experience"
+                          name="monthOfExperience"
+                        />
+                        <TextInput
+                          register={register}
+                          errors={errors}
+                          label="Week of Practice"
+                          name="weekOfPractice"
+                        />
                       </div>
                   </div>
               </div>

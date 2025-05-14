@@ -47,6 +47,7 @@ export type SettingProps = {
     profileLineOne?: string;
     profileLineTwo?: string;
     profileLineThree?: string;
+    completedProject?: number;
     monthOfExperience?: number;
     weekOfPractice?: number;
 }

@@ -9,28 +9,29 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/t
 import Image from 'next/image'
 import { WordRotateDown } from './ui/word-rotate'
 import ShinyButton from './ui/shiny-button'
+import { Settings } from '@prisma/client'
 
 
-const FixedSidebar = () => {
+const FixedSidebar = ({siteSettings}: {siteSettings: Settings | null}) => {
 
     const socialLinks = [
         {
-            href: "#",
+            href: `${siteSettings?.linkedIn}`,
             icon: FaLinkedin,
             title: "LinkedIn"
         },
         {
-            href: "#",
+            href: `${siteSettings?.facebook}`,
             icon: FaFacebook,
             title: "Facebook"
         },
         {
-            href: "#",
+            href: `${siteSettings?.line}`,
             icon: FaLine,
             title: "Line"
         },
         {
-            href: "#",
+            href: `${siteSettings?.github}`,
             icon: FaGithub,
             title: "GitHub"
         },
@@ -42,8 +43,8 @@ const FixedSidebar = () => {
         <div className='hidden md:block lg:hidden dark:bg-slate-900 bg-slate-50 gap-4 p-6 rounded-tl-xl
         rounded-b-xl w-full'>
                 <Image 
-                    src={'/Pappo.JPG'} 
-                    alt='devpap' 
+                    src={`${siteSettings?.imageUrl}`} 
+                    alt={`${siteSettings?.profileName}`}  
                     width={500} 
                     height={500}
                     className='object-cover rounded-b-xl

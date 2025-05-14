@@ -148,8 +148,8 @@ const FixedSidebar = ({siteSettings}: {siteSettings: Settings | null}) => {
                         alt={`${siteSettings?.profileName}`} 
                         width={500} 
                         height={500}
-                        className='object-cover rounded-b-xl
-                         rounded-tl-xl w-full h-72'
+                        className='object-contain rounded-b-xl
+                        rounded-tl-xl w-full h-72'
                     />
                 
                 <div className='py-2 mt-2 gap-3 flex flex-col justify-center items-center'>

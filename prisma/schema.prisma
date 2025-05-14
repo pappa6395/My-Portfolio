@@ -92,6 +92,7 @@ model Settings {
   profileLineOne      String @default("Junior Web Developer and")
   profileLineTwo      String @default("Fullstack Developer")
   profileLineThree    String @default("Based in Bangkok, Thailand.")
+  completedProject     Int @default(3)
   monthOfExperience    Int @default(6)
   weekOfPractice       Int @default(24)
  

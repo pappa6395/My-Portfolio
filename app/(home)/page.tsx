@@ -91,7 +91,7 @@ export default async function Home() {
             <FixedSidebar siteSettings={siteSettings} />
           </div>
           <div className="mx-2 space-y-4 -mt-4">
-            <ProfileCard />
+            <ProfileCard siteSettings={siteSettings}/>
             <AboutSection siteSettings={siteSettings} />
             <Projectz projectCategories={projectCategories} />
             <TechnicalSkills allSkills={allSkills} allTools={allTools || []}/>

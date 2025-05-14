@@ -67,8 +67,8 @@ const TechnicalSkills = ({
         </p>
         <ul>Next.js: Crafting interactive SPAs and SSR solutions for optimized performance.</ul>
         <ul>TypeScript: Ensuring scalable and type-safe codebases.</ul>
-        <ul>Prisma: for seamless database management.</ul>
-        <ul>MongoDB: or efficient NoSQL data storage and querying.</ul>
+        <ul>Nest.js: for the best typescript backend solution at highend level</ul>
+        <ul>PostgresQL: for most efficient SQL data storage and querying.</ul>
         <div className='grid grid-cols-1 lg:grid-cols-2 py-8 gap-6'>
             {allSkills.map((tech,i) => {
                 return (

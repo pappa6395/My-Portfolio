@@ -15,7 +15,7 @@ const AboutSection = ({siteSettings}: {siteSettings: Settings | null}) => {
         {
             title1: 'Completed',
             title2: 'Projects',
-            count: 3,
+            count: siteSettings?.completedProject ?? 3,
             plus: false,
         },
         {
